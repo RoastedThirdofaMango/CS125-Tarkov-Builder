@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".newBuildActivity" />
+        <activity android:name=".oldBuildActivity" />
     </application>
 
 </manifest>
