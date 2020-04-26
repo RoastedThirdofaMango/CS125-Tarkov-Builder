@@ -10,6 +10,7 @@ public class Mod {
      * Map holding all the mods that have a given tag.
      */
     public static Map<String, List<Mod>> tagMap = new HashMap<>();
+    protected String name;
     protected double recoilChange = 0;
     protected double ergoChange = 0;
     protected double accuracyChange = 0;
@@ -58,5 +59,8 @@ public class Mod {
     }
     public int[] getSizeChange() {
         return sizeChange;
+    }
+    public String getName() {
+        return name;
     }
 }

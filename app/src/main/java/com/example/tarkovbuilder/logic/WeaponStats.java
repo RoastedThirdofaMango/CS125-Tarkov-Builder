@@ -47,7 +47,7 @@ public abstract class WeaponStats {
                 Barrel partBarrel = (Barrel) part;
                 baseAccuracy = partBarrel.getAccuracy();
             }
-            accuracyChange += part.getRecoilChange();
+            accuracyChange += part.getAccuracyChange();
         }
         return baseAccuracy * (1 + accuracyChange);
     }
@@ -59,7 +59,7 @@ public abstract class WeaponStats {
                 Bullet partBullet = (Bullet) part;
                 baseVelocity = partBullet.getVelocity();
             }
-            velocityChange += part.getRecoilChange();
+            velocityChange += part.getVelocityChange();
         }
         return baseVelocity * (1 + velocityChange);
     }
