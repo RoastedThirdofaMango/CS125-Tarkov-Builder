@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tarkovbuilder.logic.SaveLoadHandler;
+import com.example.tarkovbuilder.logic.WeaponBuild;
+import com.google.gson.JsonObject;
 
 public class newBuildActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     protected void onCreate(final Bundle savedInstanceState) {
@@ -28,6 +33,14 @@ public class newBuildActivity extends AppCompatActivity implements AdapterView.O
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
+        Button load = findViewById(R.id.loadButton);
+        load.setOnClickListener(unused -> {
+            SaveLoadHandler.load(new JsonObject());
+        });
+        Button save = findViewById(R.id.saveButton);
+        save.setOnClickListener(unused -> {
+            SaveLoadHandler.save(new WeaponBuild(null));
+        });
     }
 
     @Override
