@@ -85,7 +85,7 @@ public class Mod {
             sizeChange = new int[] {0, 0, 0, 0};
         }
     }
-    public static List<Mod> getCompatable(List<String> tags) {
+    public static List<Mod> getCompatible(List<String> tags) {
         List<Mod> toReturn = new ArrayList<>();
         for (String tag : tags) {
             toReturn.addAll(tagMap.get(tag));
