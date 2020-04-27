@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Tarkov Builder</string>
 
+    <string name="create_name">Create New Build</string>
+
+    <string name="old_name">Access Old Build</string>
     <string-array name="numbers">
         <item>One</item>
         <item>Two</item>
