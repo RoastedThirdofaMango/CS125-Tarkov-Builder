@@ -1,7 +1,7 @@
 package com.example.tarkovbuilder.parts;
 
-import java.util.List;
-import java.util.Map;
+import com.google.gson.JsonObject;
+
 
 
 public class Weapon extends Mod {
@@ -13,9 +13,14 @@ public class Weapon extends Mod {
      * Size in stash in rows x columns format.
      */
     private int[] size;
-    public Weapon(Map<String, List<String>> setAttachmentPoints) {
-        super(new String[0], setAttachmentPoints);
-        /* Initialize all the stats based on a passed JSON object */
+    public Weapon(JsonObject stats) {
+        super(stats);
+        recoilV = stats.get("recoilV").getAsDouble();
+        recoilH = stats.get("recoilH").getAsDouble();
+        fireRate = stats.get("fireRate").getAsInt();
+        caliber = stats.get("caliber").getAsString();
+        size = new int[] {stats.get("size").getAsJsonArray().get(0).getAsInt(),
+                stats.get("size").getAsJsonArray().get(1).getAsInt()};
     }
     public double getRecoilV() {
         return recoilV;
