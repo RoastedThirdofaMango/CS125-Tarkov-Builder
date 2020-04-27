@@ -31,7 +31,7 @@ public class Mod {
      * Effect the mod has on the size of the weapon.
      * Format is (left, right, down, up).
      */
-    private int[] sizeChange = new int[4];
+    private int[] sizeChange;
     public Mod(JsonObject stats) {
         name = stats.get("name").getAsString();
         weight = stats.get("weight").getAsDouble();
@@ -71,8 +71,7 @@ public class Mod {
             List<String> values = new ArrayList<>();
             JsonArray attachmentTags = attachmentPoint.get("tags").getAsJsonArray();
             for (JsonElement tag : attachmentTags) {
-                JsonObject tagObject = tag.getAsJsonObject();
-                values.add(tagObject.get("tag").getAsString());
+                values.add(tag.getAsString());
             }
             setAttachmentPoints.put(key, values);
         }
