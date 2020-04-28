@@ -218,6 +218,7 @@ public class newBuildActivity extends AppCompatActivity implements AdapterView.O
             spinnerScope.setVisibility(View.VISIBLE);
             textViewScope.setVisibility(View.VISIBLE);
         }
+        //I don't know if this is how you wanted it to work though.
     }
 
     @Override
