@@ -240,6 +240,7 @@
                         android:layout_weight="1" />
 
                     <LinearLayout
+                        android:id="@+id/layout_subpart1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -268,6 +269,7 @@
                                 android:layout_weight="1" />
 
                             <LinearLayout
+                                android:id="@+id/layout_subpart2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -300,6 +302,7 @@
                         android:layout_weight="1" />
 
                     <LinearLayout
+                        android:id="@+id/layout_subpart3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -328,6 +331,7 @@
                                 android:layout_weight="1" />
 
                             <LinearLayout
+                                android:id="@+id/layout_subpart4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -346,6 +350,7 @@
                                     android:layout_height="wrap_content" />
 
                                 <LinearLayout
+                                    android:id="@+id/layout_subpart5"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:orientation="horizontal">
