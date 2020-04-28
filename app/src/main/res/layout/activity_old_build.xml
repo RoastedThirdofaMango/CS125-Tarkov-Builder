@@ -9,14 +9,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/loadBuild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Load" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/saveBuild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -223,6 +223,12 @@
                     android:text="Root Part"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -246,6 +252,11 @@
                             android:text="Subpart1"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+                        <Spinner
+                            android:id="@+id/spinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -268,6 +279,11 @@
                                     android:layout_height="wrap_content"
                                     android:text="Subpart2"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                                <Spinner
+                                    android:id="@+id/spinner3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -296,6 +312,11 @@
                             android:text="Subpart3"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+                        <Spinner
+                            android:id="@+id/spinner4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -319,6 +340,11 @@
                                     android:text="Subpart4"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+                                <Spinner
+                                    android:id="@+id/spinner5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -337,11 +363,17 @@
 
                                         <TextView
                                             android:id="@+id/subpart5"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:text="Subpart5"
                                             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                                        <Spinner
+                                            android:id="@+id/spinner6"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" />
                                     </LinearLayout>
 
                                 </LinearLayout>
