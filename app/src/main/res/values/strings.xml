@@ -4,6 +4,43 @@
     <string name="create_name">Create New Build</string>
 
     <string name="old_name">Access Old Build</string>
+
+    <string name="grip_name">Grip</string>
+
+    <string name="weapon_name">Weapon</string>
+
+    <string name="item_name">Item</string>
+
+    <string name="position_name">Position</string>
+
+    <string name="upper_name">Upper Receiver</string>
+
+    <string name="buffer_name">Buffer Tube</string>
+
+    <string name="stock_name">Stock</string>
+
+    <string name="scope_name">Scope</string>
+
+    <string name="barrel_name">Barrel</string>
+    
+    <string name="gas_name">Gas Block</string>
+
+    <string name="muzzle_name">Muzzle Device</string>
+    
+    <string name="suppressor_name">Suppressor</string>
+
+    <string name="handguard_name">Handguard</string>
+
+    <string name="foregrip_name">Foregrip</string>
+
+    <string name="light_name">Lasers/Flashlights</string>
+    
+    <string name="frontsight_name">Front Ironsight</string>
+    
+    <string name="backmount_name">Backup Sight Mount</string>
+
+    <string name="backsight_name">Backup Sight</string>
+
     <string-array name="numbers">
         <item>One</item>
         <item>Two</item>
