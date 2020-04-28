@@ -1,17 +1,16 @@
 package com.example.tarkovbuilder.parts;
 
-import java.util.HashMap;
-import java.util.List;
+import com.google.gson.JsonObject;
 
 public class Bullet extends Mod {
     private int damage;
     private int penetration;
     private double velocity;
-    public Bullet(String setCaliber, int setDamage, int setPen, double setVelocity) {
-        super(new String[] {setCaliber}, new HashMap<String, List<String>>());
-        damage = setDamage;
-        penetration = setPen;
-        velocity = setVelocity;
+    public Bullet(JsonObject stats) {
+        super(stats);
+        damage = stats.get("damage").getAsInt();
+        penetration = stats.get("penetration").getAsInt();
+        velocity = stats.get("velocity").getAsDouble();
     }
     public int getDamage() {
         return damage;

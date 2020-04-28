@@ -1,41 +1,91 @@
 package com.example.tarkovbuilder.parts;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Required fields for Gson message: name (String), weight (double), attachmentPoints (array with Strings and arrays of Strings), type (String)
+ */
 public class Mod {
     /**
      * Map holding all the mods that have a given tag.
      */
     public static Map<String, List<Mod>> tagMap = new HashMap<>();
-    protected String name;
-    protected double recoilChange = 0;
-    protected double ergoChange = 0;
-    protected double accuracyChange = 0;
-    protected double velocityChange = 0;
-    protected double weight = 0;
+    private String name;
+    private double recoilChange;
+    private double ergoChange;
+    private double accuracyChange;
+    private double velocityChange;
+    private double weight;
     /**
      * Maps the name of an attachment point with a list of tags corresponding to lists of parts.
      */
-    protected Map<String, List<String>> attachmentPoints;
+    private Map<String, List<String>> attachmentPoints;
     /**
      * Effect the mod has on the size of the weapon.
      * Format is (left, right, down, up).
      */
-    private int[] sizeChange = new int[4];
-    public Mod(/*stats*/ String[] tags, Map<String, List<String>> setAttachmentPoints) {
-        for (String tag : tags) {
-            /* Initialize the stats */
+    private int[] sizeChange;
+    public Mod(JsonObject stats) {
+        name = stats.get("name").getAsString();
+        weight = stats.get("weight").getAsDouble();
+        try {
+            recoilChange = stats.get("recoilChange").getAsDouble();
+        } catch (Exception e) {
+            recoilChange = 0;
+        }
+        try {
+            ergoChange = stats.get("ergoChange").getAsDouble();
+        } catch (Exception e) {
+            ergoChange = 0;
+        }
+        try {
+            accuracyChange = stats.get("accuracyChange").getAsDouble();
+        } catch (Exception e) {
+            accuracyChange = 0;
+        }
+        try {
+            velocityChange = stats.get("velocityChange").getAsDouble();
+        } catch (Exception e) {
+            velocityChange = 0;
+        }
+        JsonArray tags = stats.getAsJsonArray("tags");
+        for (int i = 0; i < tags.size(); i++) {
+            String tag = tags.get(i).getAsString();
             if (!(tagMap.containsKey(tag))) {
                 tagMap.put(tag, new ArrayList<Mod>());
             }
             tagMap.get(tag).add(this);
-            attachmentPoints = setAttachmentPoints;
+        }
+        JsonArray attachmentPointsJson = stats.getAsJsonArray("attachmentPoints");
+        Map<String, List<String>> setAttachmentPoints = new HashMap<>();
+        for (JsonElement element : attachmentPointsJson) {
+            JsonObject attachmentPoint = element.getAsJsonObject();
+            String key = attachmentPoint.get("attachmentPoint").getAsString();
+            List<String> values = new ArrayList<>();
+            JsonArray attachmentTags = attachmentPoint.get("tags").getAsJsonArray();
+            for (JsonElement tag : attachmentTags) {
+                values.add(tag.getAsString());
+            }
+            setAttachmentPoints.put(key, values);
+        }
+        attachmentPoints = setAttachmentPoints;
+        try {
+            sizeChange = new int[]{stats.get("sizeChange").getAsJsonArray().get(0).getAsInt(),
+                    stats.get("sizeChange").getAsJsonArray().get(1).getAsInt(),
+                    stats.get("sizeChange").getAsJsonArray().get(2).getAsInt(),
+                    stats.get("sizeChange").getAsJsonArray().get(3).getAsInt()};
+        } catch (Exception e) {
+            sizeChange = new int[] {0, 0, 0, 0};
         }
     }
-    public static List<Mod> getCompatable(List<String> tags) {
+    public static List<Mod> getCompatible(List<String> tags) {
         List<Mod> toReturn = new ArrayList<>();
         for (String tag : tags) {
             toReturn.addAll(tagMap.get(tag));

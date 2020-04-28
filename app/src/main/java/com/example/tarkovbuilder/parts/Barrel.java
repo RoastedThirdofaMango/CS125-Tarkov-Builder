@@ -1,13 +1,12 @@
 package com.example.tarkovbuilder.parts;
 
-import java.util.List;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
 public class Barrel extends Mod {
     private double accuracy;
-    public Barrel (String tag, Map<String, List<String>> setAttachmentPoints, double setAccuracy) {
-        super(new String[] {tag}, setAttachmentPoints);
-        accuracy = setAccuracy;
+    public Barrel (JsonObject stats) {
+        super(stats);
+        accuracy = stats.get("accuracy").getAsDouble();
     }
     public double getAccuracy() {
         return accuracy;

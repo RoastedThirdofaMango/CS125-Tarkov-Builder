@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Load" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weapon Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="126dp">
+
+            <TableRow
+                android:layout_width="394dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/weightStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Weight"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/weightValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/accuracyStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Accuracy"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/accuracyValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/recoilVStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Vertical Recoil"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilVValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilHStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Horizontal Recoil"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilHValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/ergoStaic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ergonomics"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/ergoValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/fireRateStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fire Rate"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/fireRateValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/caliberStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Caliber"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/caliberValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/velocityStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Velocity"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/velocityValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/damageStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Damage"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/damageValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/penStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="Penetration"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/penValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+        </TableLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView55"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Root Part"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/subpart1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Subpart1"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/subpart2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Subpart2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/subpart3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Subpart3"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/subpart4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Subpart4"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <Space
+                                        android:layout_width="20dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/subpart5"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="Subpart5"
+                                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>
