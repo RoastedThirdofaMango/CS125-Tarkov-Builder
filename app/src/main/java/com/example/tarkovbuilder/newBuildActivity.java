@@ -203,6 +203,7 @@ public class newBuildActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
+        //Here is my example for how I understood visibility:
         if (!text.equals("One")) {
             spinnerStock.setVisibility(View.INVISIBLE);
             textViewStock.setVisibility(View.INVISIBLE);
