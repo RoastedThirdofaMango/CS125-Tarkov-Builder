@@ -1,0 +1,115 @@
+{
+  "mods": [
+    {
+      "type": "weapon",
+      "name": "AK-74M",
+      "weight": 3,
+      "ergoChange": 50,
+      "tags": [
+        "assaultRifle"
+      ],
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Muzzle Device",
+          "tags": [
+            "muzzle545x39",
+            "optional"
+          ]
+        },
+        {
+          "attachmentPoint": "Gas Tube",
+          "tags": [
+            "akGasTube",
+            "akGasTubeCombo"
+          ]
+        },
+        {
+          "attachmentPoint": "Dovetail Mount",
+          "tags": [
+            "dovetailScope",
+            "optional",
+            "dovetailMountTall",
+            "dovetailMountMed"
+          ]
+        },
+        {
+          "attachmentPoint": "Stock",
+          "tags": [
+            "akStockModern"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "magazine545x39",
+            "optional"
+          ]
+        },
+        {
+          "attachmentPoint": "Dust Cover",
+          "tags": [
+            "akDustCoverModern",
+            "akDustCoverRail",
+            "optional"
+          ]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": [
+            "akPistolGrip"
+          ]
+        },
+        {
+          "attachmentPoint": "Charging Handle",
+          "tags": [
+            "akChargeHandle",
+            "optional"
+          ]
+        },
+        {
+          "attachmentPoint": "Rear Sight",
+          "tags": [
+            "akRearSight",
+            "optional"
+          ]
+        },
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "bullet545x39"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "none",
+      "weight": 0,
+      "tags": ["optional"],
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Izhmash AK polymer pistol grip (6P1 Sb.8)",
+      "weight": 0.065,
+      "ergoChange": 6,
+      "sizeChange": [0, 0, 1, 0],
+      "tags": [
+        "akPistolGrip"
+      ],
+      "attachmentPoints": [ ]
+    },
+    {
+      "type": "bullet",
+      "name": "5.45x39 mm BP",
+      "weight": "0.01",
+      "tags": [
+        "bullet545x39"
+      ],
+      "damage": 48,
+      "penetration": 32,
+      "velocity": 890,
+      "attachmentPoints": []
+    }
+  ]
+}
