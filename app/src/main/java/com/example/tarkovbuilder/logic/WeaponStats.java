@@ -2,10 +2,7 @@ package com.example.tarkovbuilder.logic;
 
 import com.example.tarkovbuilder.parts.Barrel;
 import com.example.tarkovbuilder.parts.Bullet;
-import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
-
-import java.util.List;
 
 public abstract class WeaponStats {
     public static double getHorizontalRecoil(WeaponBuild build) {
@@ -22,87 +19,106 @@ public abstract class WeaponStats {
         }
         return recoilChange;
     }
-    public static double getVerticalRecoil(List<Mod> parts) {
-        double recoilChange = 0;
-        double baseRecoilV = 0;
-        for (Mod part : parts) {
-            if (part instanceof Weapon) {
-                Weapon partWeapon = (Weapon) part;
-                baseRecoilV = partWeapon.getRecoilV();
-            }
-            recoilChange += part.getRecoilChange();
-        }
+    public static double getVerticalRecoil(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseRecoilV = base.getRecoilV();
+        double recoilChange = getVerticalRecoil(root);
         return baseRecoilV * (1 + recoilChange);
     }
-    public static double getErgo(List<Mod> parts) {
-        double ergo = 0;
-        for (Mod part : parts) {
-            ergo += part.getErgoChange();
+    private static double getVerticalRecoil (WeaponBuild.Component current) {
+        double recoilChange = current.getValue().getRecoilChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            recoilChange += getVerticalRecoil(attachment);
         }
-        return ergo;
+        return recoilChange;
     }
-    public static double getAccuracy(List<Mod> parts) {
-        double accuracyChange = 0;
-        double baseAccuracy = 0;
-        for (Mod part : parts) {
-            if (part instanceof Barrel) {
-                Barrel partBarrel = (Barrel) part;
-                baseAccuracy = partBarrel.getAccuracy();
-            }
-            accuracyChange += part.getAccuracyChange();
+    public static double getErgo(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseErgo = base.getErgoChange();
+        double ergoChange = getErgo(root);
+        return baseErgo + ergoChange;
+    }
+    private static double getErgo(WeaponBuild.Component current) {
+        double ergoChange = current.getValue().getErgoChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            ergoChange += getErgo(attachment);
         }
+        return ergoChange;
+    }
+    public static double getAccuracy(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseAccuracy = base.getAccuracyChange();
+        double accuracyChange = getAccuracy(root);
         return baseAccuracy * (1 + accuracyChange);
     }
-    public static double getVelocity(List<Mod> parts) {
-        double velocityChange = 0;
-        double baseVelocity = 0;
-        for (Mod part : parts) {
-            if (part instanceof Bullet) {
-                Bullet partBullet = (Bullet) part;
-                baseVelocity = partBullet.getVelocity();
+    private static double getAccuracy(WeaponBuild.Component current) {
+        double accuracyChange = current.getValue().getAccuracyChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            if (attachment.getValue() instanceof Barrel) {
+                accuracyChange += getAccuracy(attachment);
             }
-            velocityChange += part.getVelocityChange();
         }
+        return accuracyChange;
+    }
+    private static double getVelocity(WeaponBuild.Component current) {
+        double velocityChange = current.getValue().getAccuracyChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            if (attachment.getValue() instanceof Bullet) {
+                velocityChange += getAccuracy(attachment);
+            }
+
+        }
+        return velocityChange;
+    }
+    public static double getVelocity(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseVelocity = base.getVelocityChange();
+        double velocityChange = getVelocity(root);
         return baseVelocity * (1 + velocityChange);
     }
-    public static int getFireRate(List<Mod> parts) {
-        for (Mod part : parts) {
-            if (part instanceof Weapon) {
-                Weapon partWeapon = (Weapon) part;
-                return partWeapon.getFireRate();
-            }
-        }
-        return 0;
+    public static int getFireRate(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        return base.getFireRate();
     }
-    public static String getCaliber(List<Mod> parts) {
-        for (Mod part : parts) {
-            if (part instanceof Weapon) {
-                Weapon partWeapon = (Weapon) part;
-                return partWeapon.getCaliber();
-            }
-        }
-        return "";
+    public static String getCaliber(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        return base.getCaliber();
     }
-    public static double getWeight(List<Mod> parts) {
-        double weight = 0;
-        for (Mod part : parts) {
-            weight += part.getWeight();
-        }
-        return weight;
+    public static double getWeight(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseWeight = base.getWeight();
+        double weightChange = getWeight(root);
+        return baseWeight + weightChange;
     }
-    public static int getDamage(List<Mod> parts) {
-        for (Mod part : parts) {
-            if (part instanceof Bullet) {
-                Bullet partBullet = (Bullet) part;
+    private static double getWeight(WeaponBuild.Component current) {
+        double weightChange = current.getValue().getWeight();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            weightChange += getWeight(attachment);
+        }
+        return weightChange;
+    }
+    private static int getDamage(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        for (WeaponBuild.Component attachment : root.getAttachments()) {
+            if (attachment.getValue() instanceof Bullet) {
+                Bullet partBullet = (Bullet) attachment.getValue();
                 return partBullet.getDamage();
             }
         }
         return 0;
     }
-    public static int getPenetration(List<Mod> parts) {
-        for (Mod part : parts) {
-            if (part instanceof Bullet) {
-                Bullet partBullet = (Bullet) part;
+    public static int getPenetration(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        for (WeaponBuild.Component attachment : root.getAttachments()) {
+            if (attachment.getValue() instanceof Bullet) {
+                Bullet partBullet = (Bullet) attachment.getValue();
                 return partBullet.getPenetration();
             }
         }
