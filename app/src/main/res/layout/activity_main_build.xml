@@ -31,258 +31,253 @@
                 android:text="@string/save_button" />
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/weaponName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <TextView
-                android:id="@+id/weaponName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="126dp">
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="126dp">
+            <TableRow
+                android:layout_width="394dp"
+                android:layout_height="match_parent">
 
-                <TableRow
-                    android:layout_width="394dp"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/weightStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weight"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <TextView
-                        android:id="@+id/weightStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/weight"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                <TextView
+                    android:id="@+id/weightValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <TextView
-                        android:id="@+id/weightValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                <TextView
+                    android:id="@+id/accuracyStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accuracy"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <TextView
-                        android:id="@+id/accuracyStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/accuracy"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                <TextView
+                    android:id="@+id/accuracyValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <TextView
-                        android:id="@+id/accuracyValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/recoilVStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/recoil_V"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/recoilVValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/recoilHStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/recoil_H"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/recoilHValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/ergoStaic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ergo"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/ergoValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/fireRateStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fire_rate"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/fireRateValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/caliberStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/caliber"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/caliberValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/velocityStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/velocity"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/velocityValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/damageStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/damage"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/damageValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/penStatic"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pen"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                    <TextView
-                        android:id="@+id/penValue"
-                        android:layout_width="102dp"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-                </TableRow>
-            </TableLayout>
-
-            <ScrollView
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/recoilVStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recoil_V"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilVValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilHStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recoil_H"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/recoilHValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/ergoStaic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ergo"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/ergoValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/fireRateStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fire_rate"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/fireRateValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/caliberStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caliber"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/caliberValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/velocityStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/velocity"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/velocityValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/damageStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/damage"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/damageValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/penStatic"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pen"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <TextView
+                    android:id="@+id/penValue"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </TableRow>
+        </TableLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinnerRoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown" />
+
                 <LinearLayout
+                    android:id="@+id/rootHlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <Spinner
-                        android:id="@+id/spinnerRoot"
-                        android:layout_width="match_parent"
+                    <Space
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
-                        android:spinnerMode="dropdown" />
+                        android:layout_weight="1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                        <Space
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                        <Spinner
+                            android:id="@+id/spinner8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
-                            <Spinner
-                                android:id="@+id/spinner8"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
-                                <Space
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1" />
-
-                                <LinearLayout
+                                <Spinner
+                                    android:id="@+id/spinner10"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <Spinner
-                                        android:id="@+id/spinner10"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </LinearLayout>
+                                    android:layout_height="wrap_content" />
                             </LinearLayout>
-
-                            <Spinner
-                                android:id="@+id/spinner9"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
                         </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/spinner9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
-            </ScrollView>
+            </LinearLayout>
+        </ScrollView>
 
-        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

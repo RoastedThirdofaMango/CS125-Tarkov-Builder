@@ -4,7 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.widget.Button;
+
+import com.example.tarkovbuilder.logic.ModsInitializer;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonStreamParser;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 public class MainActivity extends AppCompatActivity {
     private static final int newId = 10000034;
@@ -13,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        InputStream inputStream = this.getResources().openRawResource(R.raw.mods);
+        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+        JsonObject mods = JsonParser.parseReader(in).getAsJsonObject();
+        ModsInitializer.initializeMods(mods);
         setUpUI();
     }
 
