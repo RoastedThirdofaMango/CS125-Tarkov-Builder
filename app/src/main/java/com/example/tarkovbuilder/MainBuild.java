@@ -45,16 +45,16 @@ public class MainBuild extends AppCompatActivity {
             SaveLoadHandler.load(null);
         });
 
-        TextView weaponName = findViewById(R.id.);
-        TextView weightValue = findViewById(R.id.);
-        TextView accuracyValue = findViewById(R.id.);
-        TextView recoilVValue = findViewById(R.id.);
-        TextView recoilHValue = findViewById(R.id.);
-        TextView ergoValue = findViewById(R.id.);
-        TextView fireRateValue = findViewById(R.id.);
-        TextView velocityValue = findViewById(R.id.);
-        TextView damageValue = findViewById(R.id.);
-        TextView penValue = findViewById(R.id.);
+        TextView weaponName = findViewById(R.id.weaponName);
+        TextView weightValue = findViewById(R.id.weightValue);
+        TextView accuracyValue = findViewById(R.id.accuracyValue);
+        TextView recoilVValue = findViewById(R.id.recoilVValue);
+        TextView recoilHValue = findViewById(R.id.recoilHValue);
+        TextView ergoValue = findViewById(R.id.ergoValue);
+        TextView fireRateValue = findViewById(R.id.fireRateValue);
+        TextView velocityValue = findViewById(R.id.velocityValue);
+        TextView damageValue = findViewById(R.id.damageValue);
+        TextView penValue = findViewById(R.id.penValue);
         // TextView sizeValue = findViewById(R.id.sizeValue);
 
 
