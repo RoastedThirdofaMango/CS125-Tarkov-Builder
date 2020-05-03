@@ -8,17 +8,19 @@ import com.example.tarkovbuilder.parts.Weapon;
 import java.util.List;
 
 public abstract class WeaponStats {
-    public static double getHorizontalRecoil(List<Mod> parts) {
-        double recoilChange = 0;
-        double baseRecoilH = 0;
-        for (Mod part : parts) {
-            if (part instanceof Weapon) {
-                Weapon partWeapon = (Weapon) part;
-                baseRecoilH = partWeapon.getRecoilH();
-            }
-            recoilChange += part.getRecoilChange();
-        }
+    public static double getHorizontalRecoil(WeaponBuild build) {
+        WeaponBuild.Component root = build.getRoot();
+        Weapon base = (Weapon) root.getValue();
+        double baseRecoilH = base.getRecoilH();
+        double recoilChange = getHorizontalRecoil(root);
         return baseRecoilH * (1 + recoilChange);
+    }
+    private static double getHorizontalRecoil(WeaponBuild.Component current) {
+        double recoilChange = current.getValue().getRecoilChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            recoilChange += getHorizontalRecoil(attachment);
+        }
+        return recoilChange;
     }
     public static double getVerticalRecoil(List<Mod> parts) {
         double recoilChange = 0;
@@ -106,14 +108,14 @@ public abstract class WeaponStats {
         }
         return 0;
     }
-    public int[] getSize(WeaponBuild build) {
+    public static int[] getSize(WeaponBuild build) {
         Weapon baseWeapon = (Weapon) build.getRoot().getValue();
         int[] baseSize = baseWeapon.getSize();
         int[] sizeChange = getSizeMod(build.getRoot());
         return new int[] {baseSize[0] + sizeChange[0] + sizeChange[1],
                 baseSize[1] + sizeChange[2] + sizeChange[3]};
     }
-    private int[] getSizeMod(WeaponBuild.Component current) {
+    private static int[] getSizeMod(WeaponBuild.Component current) {
         if (current.getAttachments().isEmpty()) {
             return current.getValue().getSizeChange();
         }
