@@ -106,7 +106,26 @@ public abstract class WeaponStats {
         }
         return 0;
     }
-    public static int[] getSize(WeaponBuild weapon) {
-        return weapon.getSize();
+    public int[] getSize(WeaponBuild build) {
+        Weapon baseWeapon = (Weapon) build.getRoot().getValue();
+        int[] baseSize = baseWeapon.getSize();
+        int[] sizeChange = getSizeMod(build.getRoot());
+        return new int[] {baseSize[0] + sizeChange[0] + sizeChange[1],
+                baseSize[1] + sizeChange[2] + sizeChange[3]};
+    }
+    private int[] getSizeMod(WeaponBuild.Component current) {
+        if (current.getAttachments().isEmpty()) {
+            return current.getValue().getSizeChange();
+        }
+        int[] biggestChange = {0, 0, 0, 0};
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            int[] candidate = getSizeMod(attachment);
+            for (int i = 0; i < 3; i++) {
+                if (candidate[i] > biggestChange[i]) {
+                    biggestChange[i] = candidate[i];
+                }
+            }
+        }
+        return biggestChange;
     }
 }

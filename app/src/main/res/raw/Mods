@@ -5,9 +5,7 @@
       "name": "AK-74M",
       "weight": 3,
       "ergoChange": 50,
-      "tags": [
-        "assaultRifle"
-      ],
+      "tag": "assaultRifle",
       "attachmentPoints": [
         {
           "attachmentPoint": "Muzzle Device",
@@ -85,7 +83,7 @@
       "type": "mod",
       "name": "none",
       "weight": 0,
-      "tags": ["optional"],
+      "tag": "optional",
       "attachmentPoints": []
     },
     {
@@ -94,18 +92,14 @@
       "weight": 0.065,
       "ergoChange": 6,
       "sizeChange": [0, 0, 1, 0],
-      "tags": [
-        "akPistolGrip"
-      ],
+      "tag": "akPistolGrip",
       "attachmentPoints": [ ]
     },
     {
       "type": "bullet",
       "name": "5.45x39 mm BP",
       "weight": "0.01",
-      "tags": [
-        "bullet545x39"
-      ],
+      "tag": "bullet545x39",
       "damage": 48,
       "penetration": 32,
       "velocity": 890,

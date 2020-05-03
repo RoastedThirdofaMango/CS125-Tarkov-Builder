@@ -2,67 +2,55 @@ package com.example.tarkovbuilder.logic;
 
 import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeaponBuild {
-    private List<Component> partslist = new ArrayList<>();
-    public WeaponBuild (Weapon base) {
-        root = new Component(base);
-    }
-    private class Component {
+    public class Component {
         private List<Component> attachments = new ArrayList<>();
         private Mod value;
         private Component(Mod setMod) {
             value = setMod;
         }
+        public List<Component> getAttachments() {
+            return attachments;
+        }
+        public Mod getValue() {
+            return value;
+        }
     }
+    // Constructors
+    public WeaponBuild (Weapon base) {
+        root = new Component(base);
+    }
+    public WeaponBuild(JsonObject toLoad) {
+        String rootName = toLoad.get("part").getAsString();
+        root = new Component(Mod.mods.get(rootName));
+        addAll(root, toLoad.getAsJsonArray("parts"));
+    }
+    // The root of the weapon build, always instanceOf Weapon
     private Component root;
-    public void add(Mod value, int index) {
-        // I need a way to get specific components by index
+    // Public getter for root.
+    public Component getRoot() {
+        return root;
     }
-    private void add(Component current, Mod value) {
+
+    public void add(Component current, Mod value) {
         Component toAdd = new Component(value);
         current.attachments.add(toAdd);
     }
-    public int[] getSize() {
-        Weapon baseWeapon = (Weapon) root.value;
-        int[] baseSize = baseWeapon.getSize();
-        int[] sizeChange = getSizeMod(root);
-        return new int[] {baseSize[0] + sizeChange[0] + sizeChange[1],
-                baseSize[1] + sizeChange[2] + sizeChange[3]};
-    }
-    private int[] getSizeMod(Component current) {
-        if (current.attachments.isEmpty()) {
-            return current.value.getSizeChange();
+    // Recursive tree building function for loading a build from JSON.
+    private void addAll(Component current, JsonArray parts) {
+        for (JsonElement partE : parts) {
+            JsonObject part = (JsonObject) partE;
+            String partName = part.get("part").getAsString();
+            Component toAdd = new Component(Mod.mods.get(partName));
+            current.attachments.add(toAdd);
+            addAll(toAdd, part.getAsJsonArray("parts"));
         }
-        int[] biggestChange = {0, 0, 0, 0};
-        for (Component attachment : current.attachments) {
-            int[] candidate = getSizeMod(attachment);
-            for (int i = 0; i < 3; i++) {
-                if (candidate[i] > biggestChange[i]) {
-                    biggestChange[i] = candidate[i];
-                }
-            }
-        }
-        return biggestChange;
-    }
-    public List<Mod> getParts() {
-        List<Mod> parts =  new ArrayList<>();
-        return getParts(root, parts);
-    }
-    /**
-     * Recursively builds the list of parts in the build.
-     * @param current the current component
-     * @param parts the list that is being built
-     * @return the list with the current part and all it's children appended
-     */
-    private List<Mod> getParts(Component current, List<Mod> parts) {
-        parts.add(current.value);
-        for (Component part : current.attachments) {
-            getParts(part, parts);
-        }
-        return parts;
     }
 }

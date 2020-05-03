@@ -16,7 +16,8 @@ public class Mod {
     /**
      * Map holding all the mods that have a given tag.
      */
-    public static Map<String, List<Mod>> tagMap = new HashMap<>();
+    private static Map<String, List<Mod>> tagMap = new HashMap<>();
+    public static Map<String, Mod> mods = new HashMap<>();
     private String name;
     private double recoilChange;
     private double ergoChange;
@@ -34,6 +35,10 @@ public class Mod {
     private int[] sizeChange;
     public Mod(JsonObject stats) {
         name = stats.get("name").getAsString();
+        if (mods.containsKey(name)) {
+            System.out.println("DEBUG: Duplicate mod detected");
+        }
+        mods.put(name, this);
         weight = stats.get("weight").getAsDouble();
         try {
             recoilChange = stats.get("recoilChange").getAsDouble();
@@ -55,27 +60,6 @@ public class Mod {
         } catch (Exception e) {
             velocityChange = 0;
         }
-        JsonArray tags = stats.getAsJsonArray("tags");
-        for (int i = 0; i < tags.size(); i++) {
-            String tag = tags.get(i).getAsString();
-            if (!(tagMap.containsKey(tag))) {
-                tagMap.put(tag, new ArrayList<Mod>());
-            }
-            tagMap.get(tag).add(this);
-        }
-        JsonArray attachmentPointsJson = stats.getAsJsonArray("attachmentPoints");
-        Map<String, List<String>> setAttachmentPoints = new HashMap<>();
-        for (JsonElement element : attachmentPointsJson) {
-            JsonObject attachmentPoint = element.getAsJsonObject();
-            String key = attachmentPoint.get("attachmentPoint").getAsString();
-            List<String> values = new ArrayList<>();
-            JsonArray attachmentTags = attachmentPoint.get("tags").getAsJsonArray();
-            for (JsonElement tag : attachmentTags) {
-                values.add(tag.getAsString());
-            }
-            setAttachmentPoints.put(key, values);
-        }
-        attachmentPoints = setAttachmentPoints;
         try {
             sizeChange = new int[]{stats.get("sizeChange").getAsJsonArray().get(0).getAsInt(),
                     stats.get("sizeChange").getAsJsonArray().get(1).getAsInt(),
@@ -84,6 +68,26 @@ public class Mod {
         } catch (Exception e) {
             sizeChange = new int[] {0, 0, 0, 0};
         }
+
+        String tag = stats.get("tag").getAsString();
+        if (!(tagMap.containsKey(tag))) {
+            tagMap.put(tag, new ArrayList<Mod>());
+        }
+        tagMap.get(tag).add(this);
+
+        JsonArray attachmentPointsJson = stats.getAsJsonArray("attachmentPoints");
+        Map<String, List<String>> setAttachmentPoints = new HashMap<>();
+        for (JsonElement element : attachmentPointsJson) {
+            JsonObject attachmentPoint = element.getAsJsonObject();
+            String key = attachmentPoint.get("attachmentPoint").getAsString();
+            List<String> values = new ArrayList<>();
+            JsonArray attachmentTags = attachmentPoint.get("tags").getAsJsonArray();
+            for (JsonElement attachmentTag : attachmentTags) {
+                values.add(attachmentTag.getAsString());
+            }
+            setAttachmentPoints.put(key, values);
+        }
+        attachmentPoints = setAttachmentPoints;
     }
     public static List<Mod> getCompatible(List<String> tags) {
         List<Mod> toReturn = new ArrayList<>();
@@ -112,5 +116,8 @@ public class Mod {
     }
     public String getName() {
         return name;
+    }
+    public Map<String, List<String>> getAttachmentPoints() {
+        return attachmentPoints;
     }
 }
