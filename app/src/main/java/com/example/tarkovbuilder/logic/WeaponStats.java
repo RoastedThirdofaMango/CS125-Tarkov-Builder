@@ -35,10 +35,7 @@ public abstract class WeaponStats {
     }
     public static double getErgo(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
-        Weapon base = (Weapon) root.getValue();
-        double baseErgo = base.getErgoChange();
-        double ergoChange = getErgo(root);
-        return baseErgo + ergoChange;
+        return getErgo(root);
     }
     private static double getErgo(WeaponBuild.Component current) {
         double ergoChange = current.getValue().getErgoChange();
@@ -49,36 +46,50 @@ public abstract class WeaponStats {
     }
     public static double getAccuracy(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
-        Weapon base = (Weapon) root.getValue();
-        double baseAccuracy = base.getAccuracyChange();
+        double baseAccuracy = getBaseAccuracy(root);
         double accuracyChange = getAccuracy(root);
         return baseAccuracy * (1 + accuracyChange);
     }
     private static double getAccuracy(WeaponBuild.Component current) {
         double accuracyChange = current.getValue().getAccuracyChange();
         for (WeaponBuild.Component attachment : current.getAttachments()) {
-            if (attachment.getValue() instanceof Barrel) {
-                accuracyChange += getAccuracy(attachment);
-            }
+            accuracyChange += getAccuracy(attachment);
         }
         return accuracyChange;
     }
-    private static double getVelocity(WeaponBuild.Component current) {
-        double velocityChange = current.getValue().getAccuracyChange();
-        for (WeaponBuild.Component attachment : current.getAttachments()) {
-            if (attachment.getValue() instanceof Bullet) {
-                velocityChange += getAccuracy(attachment);
+    private static double getBaseAccuracy(WeaponBuild.Component current) {
+        if (current.getValue() instanceof Barrel) {
+            Barrel barrel = (Barrel) current.getValue();
+            return barrel.getAccuracy();
+        } else {
+            for (WeaponBuild.Component attachment : current.getAttachments()) {
+                double accuracy = getBaseAccuracy(attachment);
+                if (accuracy != 0) {
+                    return accuracy;
+                }
             }
-
         }
-        return velocityChange;
+        return 0;
     }
     public static double getVelocity(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
         Weapon base = (Weapon) root.getValue();
-        double baseVelocity = base.getVelocityChange();
+        double baseVelocity = 0;
+        for (WeaponBuild.Component attachment : root.getAttachments()) {
+            if (attachment.getValue() instanceof Bullet) {
+                Bullet bullet = (Bullet) attachment.getValue();
+                baseVelocity = bullet.getVelocity();
+            }
+        }
         double velocityChange = getVelocity(root);
         return baseVelocity * (1 + velocityChange);
+    }
+    private static double getVelocity(WeaponBuild.Component current) {
+        double velocityChange = current.getValue().getVelocityChange();
+        for (WeaponBuild.Component attachment : current.getAttachments()) {
+            velocityChange += getVelocity(attachment);
+        }
+        return velocityChange;
     }
     public static int getFireRate(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
@@ -92,10 +103,7 @@ public abstract class WeaponStats {
     }
     public static double getWeight(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
-        Weapon base = (Weapon) root.getValue();
-        double baseWeight = base.getWeight();
-        double weightChange = getWeight(root);
-        return baseWeight + weightChange;
+        return getWeight(root);
     }
     private static double getWeight(WeaponBuild.Component current) {
         double weightChange = current.getValue().getWeight();
