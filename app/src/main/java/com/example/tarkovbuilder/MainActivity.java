@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Button oldBuild = findViewById(R.id.accessOldBuild);
         oldBuild.setOnClickListener(v -> {
-            Intent intent = new Intent(this, oldBuildActivity.class);
+            Intent intent = new Intent(this, MainBuild.class);
             startActivity(intent);
         });
     }
