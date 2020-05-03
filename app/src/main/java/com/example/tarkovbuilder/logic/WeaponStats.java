@@ -2,7 +2,6 @@ package com.example.tarkovbuilder.logic;
 
 import com.example.tarkovbuilder.parts.Barrel;
 import com.example.tarkovbuilder.parts.Bullet;
-import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 
 public abstract class WeaponStats {
