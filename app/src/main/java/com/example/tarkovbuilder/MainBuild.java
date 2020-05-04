@@ -3,10 +3,12 @@ package com.example.tarkovbuilder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.tarkovbuilder.logic.SaveLoadHandler;
@@ -14,9 +16,27 @@ import com.example.tarkovbuilder.logic.WeaponBuild;
 import com.example.tarkovbuilder.logic.WeaponStats;
 import com.example.tarkovbuilder.parts.Mod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainBuild extends AppCompatActivity {
     // private String sizeValueText = "";
     private WeaponBuild build;
+    private class Node {
+        private WeaponBuild.Component component;
+        private List<Node> nodes = new ArrayList<>();
+        private Node(Mod part) {
+            /* Create a horizontal layout containing a small spacer with height match_parent and width 20dp
+              and a vertical layout with height wrap_content and width match_parent.  In the vertical layout,
+              create text boxes with the name of the attachment point over spinners populated with the available
+              attachments for that attachment point using the getCompatible method in Mod.
+            */
+
+        }
+        private void addToNodes(Node toAdd) {
+            nodes.add(toAdd);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +47,22 @@ public class MainBuild extends AppCompatActivity {
     private void setUpUI() {
         // Save/load buttons
 
-        Button save = findViewById(R.id.loadBuild);
+        Button save = findViewById(R.id.saveBuild);
         save.setOnClickListener(unused -> {
-            SaveLoadHandler.save(build);
+            trySave();
         });
         Button load = findViewById(R.id.loadBuild);
         load.setOnClickListener(unused -> {
             SaveLoadHandler.load(null);
         });
 
+    }
+    private boolean trySave() {
+        if (build == null) {
+            return false;
+        }
+        SaveLoadHandler.save(build);
+        return true;
     }
     private void updateStats() {
         String weaponNameText = build.getRoot().getValue().getName();
@@ -48,7 +75,7 @@ public class MainBuild extends AppCompatActivity {
         String velocityValueText = "" + WeaponStats.getVelocity(build);
         String damageValueText = "" + WeaponStats.getDamage(build);
         String penValueText = "" + WeaponStats.getPenetration(build);
-        int[] size = WeaponStats.getSize(build);
+        // int[] size = WeaponStats.getSize(build);
         // String sizeValueText = "" + size[0] + "x" + size[1];
 
         TextView weaponName = findViewById(R.id.weaponName);
@@ -76,12 +103,10 @@ public class MainBuild extends AppCompatActivity {
         // sizeValue.setText(sizeValueText);
 
     }
-    private void addPart(Mod toAdd) {
-        /* Create a horizontal layout containing a small spacer with height match_parent and width 20dp
-          and a vertical layout with height wrap_content and width match_parent.  In the vertical layout,
-          create text boxes with the name of the attachment point over spinners populated with the available
-          attachments for that attachment point using the getCompatible method in Mod.
-        */
+    private void addPart(Mod toAdd, Node current) {
+        Node newPart = new Node(toAdd);
+        current.addToNodes(newPart);
+        updateStats();
     }
     /*public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
