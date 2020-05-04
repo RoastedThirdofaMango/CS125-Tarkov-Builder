@@ -16,11 +16,11 @@ import com.example.tarkovbuilder.logic.SaveLoadHandler;
 import com.example.tarkovbuilder.logic.WeaponBuild;
 import com.example.tarkovbuilder.logic.WeaponStats;
 import com.example.tarkovbuilder.parts.Mod;
+import com.example.tarkovbuilder.parts.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     // private String sizeValueText = "";
@@ -56,7 +56,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         });
         Button load = findViewById(R.id.loadBuild);
         load.setOnClickListener(unused -> {
-            build = SaveLoadHandler.load(null);
+            // build = SaveLoadHandler.load(null);
         });
 
         LinearLayout rootHlayout = findViewById(R.id.rootHlayout);
@@ -92,7 +92,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         String damageValueText = "" + WeaponStats.getDamage(build);
         String penValueText = "" + WeaponStats.getPenetration(build);
         // int[] size = WeaponStats.getSize(build);
-        // String sizeValueText = "" + size[0] + "x" + size[1];
+        // String sizeValueText = "" + size[1] + "x" + size[0];
 
         TextView weaponName = findViewById(R.id.weaponName);
         TextView weightValue = findViewById(R.id.weightValue);
@@ -104,6 +104,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         TextView velocityValue = findViewById(R.id.velocityValue);
         TextView damageValue = findViewById(R.id.damageValue);
         TextView penValue = findViewById(R.id.penValue);
+        TextView caliberValue = findViewById(R.id.caliberValue);
         // TextView sizeValue = findViewById(R.id.sizeValue);
 
         weaponName.setText(weaponNameText);
@@ -116,6 +117,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         velocityValue.setText(velocityValueText);
         damageValue.setText(damageValueText);
         penValue.setText(penValueText);
+        caliberValue.setText(WeaponStats.getCaliber(build));
         // sizeValue.setText(sizeValueText);
 
     }
@@ -129,6 +131,10 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         TextView textView = (TextView) view;
         String data = (String) textView.getText();
         Mod mod = Mod.mods.get(data);
+        if (mod instanceof Weapon) {
+            build = new WeaponBuild((Weapon) mod);
+            updateStats();
+        }
         Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
         List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
         for (String attachmentPoint : attachmentList) {
