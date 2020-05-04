@@ -16,7 +16,7 @@ public class Mod {
     /**
      * Map holding all the mods that have a given tag.
      */
-    private static Map<String, List<Mod>> tagMap = new HashMap<>();
+    public static Map<String, List<Mod>> tagMap = new HashMap<>();
     public static Map<String, Mod> mods = new HashMap<>();
     private String name;
     private double recoilChange;

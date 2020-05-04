@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -18,8 +19,10 @@ import com.example.tarkovbuilder.parts.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class MainBuild extends AppCompatActivity {
+public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     // private String sizeValueText = "";
     private WeaponBuild build;
     private class Node {
@@ -53,9 +56,22 @@ public class MainBuild extends AppCompatActivity {
         });
         Button load = findViewById(R.id.loadBuild);
         load.setOnClickListener(unused -> {
-            SaveLoadHandler.load(null);
+            build = SaveLoadHandler.load(null);
         });
 
+        LinearLayout rootHlayout = findViewById(R.id.rootHlayout);
+        rootHlayout.setVisibility(View.GONE);
+
+        Spinner rootSpinner = findViewById(R.id.spinnerRoot);
+        List<String> weapons = new ArrayList<>();
+        weapons.add("none");
+        List<Mod> assaultRifles = (Mod.tagMap.get("assaultRifle"));
+        for (Mod m :assaultRifles) {
+            weapons.add(m.getName());
+        }
+        ArrayAdapter<String> rootAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, weapons);
+        rootSpinner.setAdapter(rootAdapter);
+        rootSpinner.setOnItemSelectedListener(this);
     }
     private boolean trySave() {
         if (build == null) {
@@ -108,25 +124,23 @@ public class MainBuild extends AppCompatActivity {
         current.addToNodes(newPart);
         updateStats();
     }
-    /*public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        long parentID = parent.getId();
-        if (parentID == R.id.spinner) {
-            if (text.equals("0")) {
-                layout1.setVisibility(LinearLayout.GONE);
-                layout2.setVisibility(LinearLayout.GONE);
-            } else if (text.equals("1")) {
-                layout1.setVisibility(LinearLayout.VISIBLE);
-                layout2.setVisibility(LinearLayout.GONE);
-            } else {
-                layout1.setVisibility(LinearLayout.VISIBLE);
-                layout2.setVisibility(LinearLayout.VISIBLE);
-            }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // This doesn't crash the emulator, so I guess everything works sort of?  Currently the spinners don't show up, but then again I haven't assigned them to a view.
+        TextView textView = (TextView) view;
+        String data = (String) textView.getText();
+        Mod mod = Mod.mods.get(data);
+        Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
+        List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
+        for (String attachmentPoint : attachmentList) {
+            ArrayAdapter<String> compatible = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, attachmentPoints.get(attachmentPoint));
+            Spinner spinner = new Spinner(this);
+            spinner.setAdapter(compatible);
+            spinner.setOnItemSelectedListener(this);
         }
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-    }*/
+    }
 }
