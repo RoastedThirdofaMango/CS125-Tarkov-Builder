@@ -112,7 +112,7 @@ public abstract class WeaponStats {
         }
         return weightChange;
     }
-    private static int getDamage(WeaponBuild build) {
+    public static int getDamage(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
         for (WeaponBuild.Component attachment : root.getAttachments()) {
             if (attachment.getValue() instanceof Bullet) {

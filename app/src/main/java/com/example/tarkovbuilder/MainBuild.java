@@ -11,19 +11,10 @@ import android.widget.TextView;
 
 import com.example.tarkovbuilder.logic.SaveLoadHandler;
 import com.example.tarkovbuilder.logic.WeaponBuild;
+import com.example.tarkovbuilder.logic.WeaponStats;
 import com.example.tarkovbuilder.parts.Mod;
 
 public class MainBuild extends AppCompatActivity {
-    private String weaponNameText = "";
-    private String weightValueText = "";
-    private String accuracyValueText = "";
-    private String recoilVValueText = "";
-    private String recoilHValueText = "";
-    private String ergoValueText = "";
-    private String fireRateValueText = "";
-    private String velocityValueText = "";
-    private String damageValueText = "";
-    private String penValueText = "";
     // private String sizeValueText = "";
     private WeaponBuild build;
 
@@ -45,6 +36,21 @@ public class MainBuild extends AppCompatActivity {
             SaveLoadHandler.load(null);
         });
 
+    }
+    private void updateStats() {
+        String weaponNameText = build.getRoot().getValue().getName();
+        String weightValueText = "" + WeaponStats.getWeight(build);
+        String accuracyValueText = "" + WeaponStats.getAccuracy(build);
+        String recoilVValueText = "" + WeaponStats.getVerticalRecoil(build);
+        String recoilHValueText = "" + WeaponStats.getHorizontalRecoil(build);
+        String ergoValueText = "" + WeaponStats.getErgo(build);
+        String fireRateValueText = "" + WeaponStats.getFireRate(build);
+        String velocityValueText = "" + WeaponStats.getVelocity(build);
+        String damageValueText = "" + WeaponStats.getDamage(build);
+        String penValueText = "" + WeaponStats.getPenetration(build);
+        int[] size = WeaponStats.getSize(build);
+        // String sizeValueText = "" + size[0] + "x" + size[1];
+
         TextView weaponName = findViewById(R.id.weaponName);
         TextView weightValue = findViewById(R.id.weightValue);
         TextView accuracyValue = findViewById(R.id.accuracyValue);
@@ -57,9 +63,17 @@ public class MainBuild extends AppCompatActivity {
         TextView penValue = findViewById(R.id.penValue);
         // TextView sizeValue = findViewById(R.id.sizeValue);
 
-
-    }
-    private void updateUI() {
+        weaponName.setText(weaponNameText);
+        weightValue.setText(weightValueText);
+        accuracyValue.setText(accuracyValueText);
+        recoilVValue.setText(recoilVValueText);
+        recoilHValue.setText(recoilHValueText);
+        ergoValue.setText(ergoValueText);
+        fireRateValue.setText(fireRateValueText);
+        velocityValue.setText(velocityValueText);
+        damageValue.setText(damageValueText);
+        penValue.setText(penValueText);
+        // sizeValue.setText(sizeValueText);
 
     }
     private void addPart(Mod toAdd) {
