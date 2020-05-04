@@ -3,8 +3,13 @@
     {
       "type": "weapon",
       "name": "AK-74M",
-      "weight": 3,
-      "ergoChange": 50,
+      "weight": 2.392,
+      "ergoChange": 35,
+      "recoilV": 146,
+      "recoilH": 409,
+      "fireRate": 650,
+      "caliber": "5.45x39mm",
+      "size": [4,1],
       "tag": "assaultRifle",
       "attachmentPoints": [
         {
@@ -93,12 +98,12 @@
       "ergoChange": 6,
       "sizeChange": [0, 0, 1, 0],
       "tag": "akPistolGrip",
-      "attachmentPoints": [ ]
+      "attachmentPoints": []
     },
     {
       "type": "bullet",
       "name": "5.45x39 mm BP",
-      "weight": "0.01",
+      "weight": 0.01,
       "tag": "bullet545x39",
       "damage": 48,
       "penetration": 32,

@@ -71,7 +71,7 @@ public class Mod {
 
         String tag = stats.get("tag").getAsString();
         if (!(tagMap.containsKey(tag))) {
-            tagMap.put(tag, new ArrayList<Mod>());
+            tagMap.put(tag, new ArrayList<>());
         }
         tagMap.get(tag).add(this);
 
