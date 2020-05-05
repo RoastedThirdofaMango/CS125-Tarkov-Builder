@@ -1,93 +1,6 @@
 {
   "mods": [
     {
-      "type": "weapon",
-      "name": "AK-74M",
-      "weight": 2.392,
-      "ergoChange": 35,
-      "recoilV": 146,
-      "recoilH": 409,
-      "fireRate": 650,
-      "caliber": "5.45x39mm",
-      "size": [4,1],
-      "tag": "assaultRifle",
-      "attachmentPoints": [
-        {
-          "attachmentPoint": "Muzzle Device",
-          "tags": [
-            "optional",
-            "muzzle545x39"
-          ]
-        },
-        {
-          "attachmentPoint": "Gas Tube",
-          "tags": [
-            "optional",
-            "akGasTube",
-            "akGasTubeCombo"
-          ]
-        },
-        {
-          "attachmentPoint": "Dovetail Mount",
-          "tags": [
-            "optional",
-            "dovetailScope",
-            "dovetailMountTall",
-            "dovetailMountMed"
-          ]
-        },
-        {
-          "attachmentPoint": "Stock",
-          "tags": [
-            "optional",
-            "akStockModern"
-          ]
-        },
-        {
-          "attachmentPoint": "Magazine",
-          "tags": [
-            "optional",
-            "magazine545x39"
-          ]
-        },
-        {
-          "attachmentPoint": "Dust Cover",
-          "tags": [
-            "optional",
-            "akDustCoverModern",
-            "akDustCoverRail"
-          ]
-        },
-        {
-          "attachmentPoint": "Pistol Grip",
-          "tags": [
-            "akPistolGrip"
-          ]
-        },
-        {
-          "attachmentPoint": "Charging Handle",
-          "tags": [
-            "optional",
-            "akChargeHandle"
-          ]
-        },
-        {
-          "attachmentPoint": "Rear Sight",
-          "tags": [
-            "optional",
-            "akRearSight"
-          ]
-        },
-        {
-          "attachmentPoint": "Ammunition",
-          "tags": [
-            "optional",
-            "bullet545x39"
-          ]
-        }
-      ]
-    },
-    {
       "type": "mod",
       "name": "none",
       "weight": 0,
@@ -106,63 +19,53 @@
       "tag": "emptyWeapon",
       "attachmentPoints": []
     },
+
     {
-      "type": "mod",
-      "name": "Izhmash AK polymer pistol grip (6P1 Sb.8)",
-      "weight": 0.065,
-      "ergoChange": 6,
-      "sizeChange": [0, 0, 1, 0],
-      "tag": "akPistolGrip",
-      "attachmentPoints": []
-    },
-    {
-      "type": "bullet",
-      "name": "5.45x39 mm BP",
-      "weight": 0.01,
-      "tag": "bullet545x39",
-      "damage": 48,
-      "penetration": 32,
-      "velocity": 890,
-      "attachmentPoints": []
-    },
-    {
-      "type": "mod",
-      "name": "Zenit-Belomo PSO 1 4x24 scope",
-      "weight": 0.6,
-      "ergoChange": -7,
-      "tag": "dovetailScope",
+      "type": "weapon",
+      "name": "DT MDR 7.62x51",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 650,
+      "caliber": "7.62x51mm",
+      "size": [2,1],
+      "tag": "assaultRifle",
       "attachmentPoints": [
         {
-          "attachmentPoint": "Eyecup",
-          "tags": ["optional", "psoEyecup"]
-        }
-      ]
-    },
-    {
-      "type": "mod",
-      "name": "Cobra EKP-8-02 reflex sight",
-      "weight": 0.273,
-      "ergoChange": -7,
-      "recoilChange": -0.01,
-      "tag": "dovetailScope",
-      "attachmentPoints": [
-        {
-          "attachmentPoint": "Sight Shade",
+          "attachmentPoint": "Ammunition",
           "tags": [
             "optional",
-            "cobraShade"
+            "bullet762x51"
           ]
-        }
-      ]
-    },
-    {
-      "type": "mod",
-      "name": "B-13 rail platform",
-      "weight": 0.175,
-      "tag": "dovetailMountMed",
-      "attachmentPoints": [
+        },
         {
-          "attachmentPoint": "Scope",
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag762"
+          ]
+        },
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["mdr308barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["mdrHandguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": ["mdrGrip"]
+        },
+        {
+          "attachmentPoint": "Sight",
           "tags": [
             "optional",
             "scopeRail",
@@ -172,6 +75,932 @@
         }
       ]
     },
+    {
+      "type": "weapon",
+      "name": "DT MDR 5.56x45",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 650,
+      "caliber": "5.56x45mm",
+      "size": [2,1],
+      "tag": "assaultRifle",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "optional",
+            "bullet556x45"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag556"
+          ]
+        },
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["mdr556barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["mdrHandguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": ["mdrGrip"]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "barrel",
+      "name": "16 inch .308 barrel for MDR",
+      "weight": 0.62,
+      "accuracy": 1.32,
+      "velocityChange": -0.0558,
+      "recoilChange": -0.1,
+      "ergoChange": -4,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "mdr308barrel",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Muzzle",
+          "tags": [
+            "optional",
+            "muzzle762NATO"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "barrel",
+      "name": "406mm 5.56mm barrel for MDR",
+      "weight": 0.509,
+      "accuracy": 1.32,
+      "velocityChange": -0.05,
+      "recoilChange": -0.09,
+      "ergoChange": -4,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "mdr556barrel",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Muzzle",
+          "tags": [
+            "optional",
+            "muzzle556NATO"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Desert Tech foregrip for MDR (Black)",
+      "weight": 0.269,
+      "ergoChange": 9,
+      "recoilChange": -0.01,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "mdrHandguard",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Top Laser",
+          "tags": [
+            "optional",
+            "laserTop"
+          ]
+        },
+        {
+          "attachmentPoint": "Left M-Lok mount",
+          "tags": [
+            "optional",
+            "mlokShort"
+          ]
+        },
+        {
+          "attachmentPoint": "Right M-Lok mount",
+          "tags": [
+            "optional",
+            "mlokShort"
+          ]
+        },
+        {
+          "attachmentPoint": "Foregrip Mount",
+          "tags": [
+            "optional",
+            "mlokLong"
+          ]
+        },
+        {
+          "attachmentPoint": "Front Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightFront"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Desert Tech foregrip for MDR (FDE)",
+      "weight": 0.269,
+      "ergoChange": 9,
+      "recoilChange": -0.01,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "mdrHandguard",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Top Laser",
+          "tags": [
+            "optional",
+            "laserTop"
+          ]
+        },
+        {
+          "attachmentPoint": "Left M-Lok mount",
+          "tags": [
+            "optional",
+            "mlokShort"
+          ]
+        },
+        {
+          "attachmentPoint": "Right M-Lok mount",
+          "tags": [
+            "optional",
+            "mlokShort"
+          ]
+        },
+        {
+          "attachmentPoint": "Foregrip Mount",
+          "tags": [
+            "optional",
+            "mlokLong"
+          ]
+        },
+        {
+          "attachmentPoint": "Front Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightFront"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Desert Tech pistol grip for MDR (Black)",
+      "weight": 0.08,
+      "ergoChange": 5,
+      "sizeChange": [0, 0, 1, 0],
+      "tag": "mdrGrip",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Desert Tech pistol grip for MDR (FDE)",
+      "weight": 0.08,
+      "sizeChange": [0, 0, 1, 0],
+      "tag": "mdrGrip",
+      "attachmentPoints": []
+    },
+
+    {
+      "type": "mod",
+      "name": "PMAG SR/LR GEN M3 20 7.62x51 20 rnd",
+      "weight": 0.35,
+      "ergoChange": -2,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag762",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "KAC Steel 10 7.62x51 10 rnd",
+      "weight": 0.41,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag762",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "KAC Steel 20 7.62x51 20 rnd",
+      "weight": 0.52,
+      "ergoChange": -2,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag762",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Colt AR-15 5.56x45 STANAG 30-round magazine",
+      "weight": 0.117,
+      "ergoChange": -5,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag556",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Magpul PMAG D-60 5.56x45 60-round magazine",
+      "weight": 0.58,
+      "ergoChange": -12,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag556",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "PMAG GEN M3 30 5.56x45 STANAG 30-round magazine",
+      "weight": 0.138,
+      "ergoChange": -4,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag556",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "PMAG GEN M3 W 30 5.56x45 STANAG 30-round magazine",
+      "weight": 0.138,
+      "ergoChange": -4,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag556",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "60-round MAG5-60 5.56x45 STANAG magazine",
+      "weight": 0.18,
+      "ergoChange": -15,
+      "sizeChange": [0,0,1,0],
+      "tag": "stanag556",
+      "attachmentPoints": []
+    },
+
+    {
+      "type": "weapon",
+      "name": "Colt M4A1 5.56x45",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 800,
+      "caliber": "5.56x45mm",
+      "size": [1,1],
+      "tag": "assaultRifle",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "optional",
+            "bullet556x45"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag556"
+          ]
+        },
+        {
+          "attachmentPoint": "Upper Receiver",
+          "tags": ["m4upper"]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": [
+            "m4Grip"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "weapon",
+      "name": "ADAR 2-15 .223",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 800,
+      "caliber": "5.56x45mm",
+      "size": [1,1],
+      "tag": "assaultRifle",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "optional",
+            "bullet556x45"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag556"
+          ]
+        },
+        {
+          "attachmentPoint": "Upper Receiver",
+          "tags": ["m4upper"]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": [
+            "m4Grip"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "weapon",
+      "name": "Lone Star TX-15 DML",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 800,
+      "caliber": "5.56x45mm",
+      "size": [1,1],
+      "tag": "assaultRifle",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "optional",
+            "bullet556x45"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag556"
+          ]
+        },
+        {
+          "attachmentPoint": "Upper Receiver",
+          "tags": ["m4upper"]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": [
+            "m4Grip"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Upper receiver Colt M4A1",
+      "weight": 0.27,
+      "ergoChange": 5,
+      "tag": "m4upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["m4barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["m4Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Upper receiver ADAR 2-15",
+      "weight": 0.27,
+      "ergoChange": 4,
+      "tag": "m4upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["m4barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["m4Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Lightweight upper TX15",
+      "weight": 0.19,
+      "ergoChange": 6,
+      "recoilChange": -0.02,
+      "tag": "m4upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["m4barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["m4Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Noveske Gen.3 upper for AR15",
+      "weight": 0.212,
+      "ergoChange": 13,
+      "recoilChange": -0.02,
+      "tag": "m4upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["m4barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["m4Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Vltor MUR-1S for AR15",
+      "weight": 0.246,
+      "ergoChange": 8,
+      "recoilChange": -0.05,
+      "accuracyChange": 0.02,
+      "tag": "m4upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["m4barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["m4Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Daniel Defence RIS II 9.5",
+      "weight": 0.399,
+      "ergoChange": 7,
+      "tag": "m4Handguard",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Top Laser",
+          "tags": [
+            "optional",
+            "topLaser"
+          ]
+        },
+        {
+          "attachmentPoint": "Left Laser",
+          "tags": [
+            "optional",
+            "topLaser",
+            "laser"
+          ]
+        },
+        {
+          "attachmentPoint": "Right Laser",
+          "tags": [
+            "optional",
+            "topLaser",
+            "laser"
+          ]
+        },
+        {
+          "attachmentPoint": "Foregrip",
+          "tags": [
+            "optional",
+            "vfg",
+            "vfgLong"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "backupSightMount"
+          ]
+        },
+        {
+          "attachmentPoint": "Front Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightFront"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "barrel",
+      "name": "370mm barrel for AR-15",
+      "weight": 0.509,
+      "accuracy": 1.32,
+      "velocityChange": -0.0648,
+      "recoilChange": -0.04,
+      "ergoChange": -9,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "m4barrel",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Gas Block",
+          "tags": ["m4gasBlock"]
+        },
+        {
+          "attachmentPoint": "Muzzle",
+          "tags": [
+            "optional",
+            "muzzle556NATO"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "MK12 Low Profile Gas Block",
+      "weight": 0.053,
+      "tag": "m4gasBlock",
+      "attachmentPoints": []
+    },
+
+
+    {
+      "type": "weapon",
+      "name": "HK416A5 5.56x45",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 850,
+      "caliber": "5.56x45mm",
+      "size": [1,1],
+      "tag": "assaultRifle",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Ammunition",
+          "tags": [
+            "optional",
+            "bullet556x45"
+          ]
+        },
+        {
+          "attachmentPoint": "Magazine",
+          "tags": [
+            "optional",
+            "stanag556"
+          ]
+        },
+        {
+          "attachmentPoint": "Upper Receiver",
+          "tags": ["416upper"]
+        },
+        {
+          "attachmentPoint": "Pistol Grip",
+          "tags": [
+            "m4Grip"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Upper receiver HK 416A5",
+      "weight": 0.27,
+      "ergoChange": 6,
+      "tag": "416upper",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Barrel",
+          "tags": ["416barrel"]
+        },
+        {
+          "attachmentPoint": "Handguard",
+          "tags": ["416Handguard"]
+        },
+        {
+          "attachmentPoint": "Rear Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightRear"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "barrel",
+      "name": "11\" barrel for 416A5",
+      "weight": 0.615,
+      "accuracy": 1.32,
+      "velocityChange": -0.16,
+      "recoilChange": -0.02,
+      "ergoChange": -6,
+      "sizeChange": [2, 0, 0, 0],
+      "tag": "416barrel",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Gas Block",
+          "tags": ["416gasBlock"]
+        },
+        {
+          "attachmentPoint": "Muzzle",
+          "tags": [
+            "optional",
+            "muzzle556NATO"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "HK 416A5 Regular Low Profile Gas Block",
+      "weight": 0.12,
+      "tag": "416gasBlock",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "HK quadrail handguard for 416",
+      "weight": 0.399,
+      "ergoChange": 4,
+      "tag": "416Handguard",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Top Laser",
+          "tags": [
+            "optional",
+            "topLaser"
+          ]
+        },
+        {
+          "attachmentPoint": "Left Laser",
+          "tags": [
+            "optional",
+            "topLaser",
+            "laser"
+          ]
+        },
+        {
+          "attachmentPoint": "Right Laser",
+          "tags": [
+            "optional",
+            "topLaser",
+            "laser"
+          ]
+        },
+        {
+          "attachmentPoint": "Foregrip",
+          "tags": [
+            "optional",
+            "vfg",
+            "vfgLong"
+          ]
+        },
+        {
+          "attachmentPoint": "Sight",
+          "tags": [
+            "optional",
+            "backupSightMount"
+          ]
+        },
+        {
+          "attachmentPoint": "Front Ironsight",
+          "tags": [
+            "optional",
+            "railIronsightFront"
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "mod",
+      "name": "Colt A2 AR-15 Pistol Grip",
+      "weight": 0.08,
+      "ergoChange": 5,
+      "tag": "m4Grip",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "HK Ergo PSG-1 style pistol grip",
+      "weight": 0.11,
+      "ergoChange": 18,
+      "tag": "m4Grip",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Hogue OverMolded Rubber Grip (Black)",
+      "weight": 0.08,
+      "ergoChange": 9,
+      "tag": "m4Grip",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Hogue OverMolded Rubber Grip (FDE)",
+      "weight": 0.08,
+      "ergoChange": 9,
+      "tag": "m4Grip",
+      "attachmentPoints": []
+    },
+
+    {
+      "type": "bullet",
+      "name": "M855",
+      "weight": 0.012,
+      "velocity": 922,
+      "damage": 49,
+      "penetration": 26,
+      "tag": "bullet556x45",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "M855A1",
+      "weight": 0.012,
+      "velocity": 945,
+      "damage": 44,
+      "penetration": 40,
+      "tag": "bullet556x45",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "M995",
+      "weight": 0.012,
+      "velocity": 1013,
+      "damage": 41,
+      "penetration": 53,
+      "tag": "bullet556x45",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "M80",
+      "weight": 0.024,
+      "velocity": 833,
+      "damage": 80,
+      "penetration": 41,
+      "tag": "bullet762x51",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "M61",
+      "weight": 0.024,
+      "velocity": 849,
+      "damage": 70,
+      "penetration": 68,
+      "tag": "bullet762x51",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "AP 6.3",
+      "weight": 0.009,
+      "velocity": 392,
+      "damage": 52,
+      "penetration": 25,
+      "tag": "bullet9x19",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "Pst gzh",
+      "weight": 0.009,
+      "velocity": 457,
+      "damage": 54,
+      "penetration": 18,
+      "tag": "bullet9x19",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "SS190",
+      "weight": 0.006,
+      "velocity": 716,
+      "damage": 49,
+      "penetration": 37,
+      "tag": "bullet57x28",
+      "attachmentPoints": []
+    },
+    {
+      "type": "bullet",
+      "name": "SB193",
+      "weight": 0.006,
+      "velocity": 305,
+      "damage": 54,
+      "penetration": 35,
+      "recoilChange": -0.2,
+      "tag": "bullet57x28",
+      "attachmentPoints": []
+    },
+
+
     {
       "type": "mod",
       "name": "Leupold Mark 4 HAMR 4x24mm DeltaPoint hybrid assault scope",
@@ -191,49 +1020,6 @@
       "weight": 0.053,
       "tag": "deltaPoint",
       "attachmentPoints": []
-    },
-    {
-      "type": "mod",
-      "name": "PSO scope eyecup",
-      "weight": 0.005,
-      "ergoChange": 1,
-      "tag": "psoEyecup",
-      "attachmentPoints": []
-    },
-    {
-      "type": "mod",
-      "name": "Cobra Family Sights Shade",
-      "weight": 0.005,
-      "ergoChange": 1,
-      "tag": "cobraShade",
-      "attachmentPoints": []
-    },
-    {
-      "type": "mod",
-      "name": "Izhmash АK-74M dust cover (6P34 0-1)",
-      "weight": 0.088,
-      "ergoChange": 5,
-      "tag": "akDustCoverModern",
-      "attachmentPoints": []
-    },
-    {
-      "type": "mod",
-      "name": "Fab Defence PDC dust cover for AK-74",
-      "weight": 0.202,
-      "ergoChange": 7,
-      "accuracyChange": 0.01,
-      "tag": "akDustCoverRail",
-      "attachmentPoints": [
-        {
-          "attachmentPoint": "Scope",
-          "tags": [
-            "optional",
-            "scopeRail",
-            "reflex",
-            "reflexCRail"
-          ]
-        }
-      ]
     }
   ]
 }
