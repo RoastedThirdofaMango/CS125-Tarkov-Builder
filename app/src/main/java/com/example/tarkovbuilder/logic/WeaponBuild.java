@@ -13,6 +13,7 @@ public class WeaponBuild {
     public class Component {
         private List<Component> attachments = new ArrayList<>();
         private Mod value;
+        private boolean removed = false;
         private Component(Mod setMod) {
             value = setMod;
         }
@@ -21,6 +22,18 @@ public class WeaponBuild {
         }
         public Mod getValue() {
             return value;
+        }
+        public Component addAttachment(Mod toAdd) {
+            Component toReturn = new Component(toAdd);
+            attachments.add(toReturn);
+            return toReturn;
+        }
+        public boolean isRemoved() {
+            return removed;
+        }
+        public void removeChild(Component toRemove) {
+            attachments.remove(toRemove);
+            toRemove.removed = true;
         }
     }
     // Constructors
