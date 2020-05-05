@@ -29,8 +29,8 @@
         {
           "attachmentPoint": "Dovetail Mount",
           "tags": [
-            "dovetailScope",
             "optional",
+            "dovetailScope",
             "dovetailMountTall",
             "dovetailMountMed"
           ]
@@ -44,16 +44,16 @@
         {
           "attachmentPoint": "Magazine",
           "tags": [
-            "magazine545x39",
-            "optional"
+            "optional",
+            "magazine545x39"
           ]
         },
         {
           "attachmentPoint": "Dust Cover",
           "tags": [
+            "optional",
             "akDustCoverModern",
-            "akDustCoverRail",
-            "optional"
+            "akDustCoverRail"
           ]
         },
         {
@@ -65,20 +65,21 @@
         {
           "attachmentPoint": "Charging Handle",
           "tags": [
-            "akChargeHandle",
-            "optional"
+            "optional",
+            "akChargeHandle"
           ]
         },
         {
           "attachmentPoint": "Rear Sight",
           "tags": [
-            "akRearSight",
-            "optional"
+            "optional",
+            "akRearSight"
           ]
         },
         {
           "attachmentPoint": "Ammunition",
           "tags": [
+            "optional",
             "bullet545x39"
           ]
         }

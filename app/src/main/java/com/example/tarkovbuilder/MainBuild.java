@@ -3,13 +3,12 @@ package com.example.tarkovbuilder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,16 +28,27 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
     // private String sizeValueText = "";
     private WeaponBuild build;
     private LinearLayout.LayoutParams standard = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+    private Map<LinearLayout, Node> nodeMap = new HashMap<>();
     private class Node {
         private WeaponBuild.Component component;
         private List<Node> nodes = new ArrayList<>();
-        private Node(Mod part) {
+        private LinearLayout parent;
+        private Node(LinearLayout setParent) {
 
         }
         private void addToNodes(Node toAdd) {
             nodes.add(toAdd);
         }
+        private void destroy(Node toDestroy) {
+            for (Node n : nodes) {
+                destroy(n);
+                nodeMap.remove(n.parent);
+            }
+            parent.removeAllViews();
+        }
+
     }
+    private Node root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +68,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             // build = SaveLoadHandler.load(null);
         });
 
-        LinearLayout hideThis = findViewById(R.id.hideThis);
+        LinearLayout hideThis = findViewById(R.id.rootHlayout);
         hideThis.setVisibility(View.GONE);
 
         Spinner rootSpinner = findViewById(R.id.spinnerRoot);
@@ -119,11 +130,11 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         // sizeValue.setText(sizeValueText);
 
     }
-    private void addPart(Mod toAdd, Node current) {
-        Node newPart = new Node(toAdd);
+    /*private void addPart(Mod toAdd, Node current) {
+        Node newPart = new Node();
         current.addToNodes(newPart);
         updateStats();
-    }
+    }*/
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // Find the text that was selected
         TextView textView = (TextView) view;
@@ -133,49 +144,51 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         // If this Mod is a weapon, start a new build
         if (mod instanceof Weapon) {
             build = new WeaponBuild((Weapon) mod);
-            updateStats();
         }
+
         // Find the layout holding the spinner that was used
         LinearLayout linearLayoutParent = (LinearLayout) view.getParent().getParent();
-        if (mod != null) {
-            // Retrieve the map of attachment point names to tags of mods that fit
-            Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
-            // Extract a List of only the attachment point names (to iterate over)
-            List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
-            for (String attachmentPoint : attachmentList) {
-                if (attachmentPoints.get(attachmentPoint) != null) {
-                    // Array adapter with those names
-                    ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Mod.getCompatible(attachmentPoints.get(attachmentPoint)));
-                    Spinner spinner = new Spinner(this);
-                    spinner.setAdapter(compatible);
-                    spinner.setOnItemSelectedListener(this);
-                    // Build the UI component
-                    Space space = new Space(this);
-                    // NOTE: width 100 is exaggerated for testing!
-                    space.setLayoutParams(new LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT));
-                    // TextView with the name of the attachment point
-                    TextView text = new TextView(this);
-                    text.setText(attachmentPoint);
-                    text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                    // Vertical layout holding attachment point name and the spinner
-                    LinearLayout layoutV = new LinearLayout(this);
-                    layoutV.setLayoutParams(standard);
-                    layoutV.setOrientation(LinearLayout.VERTICAL);
-                    layoutV.addView(text);
-                    layoutV.addView(spinner);
-                    // Horizontal layout so that we can add spacing, contains a spacer and the vertical layout with the content
-                    LinearLayout layoutH = new LinearLayout(this);
-                    layoutH.setOrientation(LinearLayout.HORIZONTAL);
-                    layoutH.setLayoutParams(standard);
-                    layoutH.addView(space);
-                    layoutH.addView(layoutV);
-                    linearLayoutParent.addView(layoutH);
-                    // Probably want to make some way to reference back to this particular horizontal layout in the future...
-                }
+        Spinner s = (Spinner) view.getParent();
+        TextView t = (TextView) linearLayoutParent.getChildAt(0);
+        linearLayoutParent.removeAllViews();
+        linearLayoutParent.addView(t);
+        linearLayoutParent.addView(s);
+
+        // Retrieve the map of attachment point names to tags of mods that fit
+        Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
+        // Extract a List of only the attachment point names (to iterate over)
+        List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
+        for (String attachmentPoint : attachmentList) {
+            if (attachmentPoints.get(attachmentPoint) != null) {
+                // Array adapter with those names
+                ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Mod.getCompatible(attachmentPoints.get(attachmentPoint)));
+                Spinner spinner = new Spinner(this);
+                spinner.setAdapter(compatible);
+                spinner.setOnItemSelectedListener(this);
+                // TextView with the name of the attachment point
+                TextView text = new TextView(this);
+                text.setText(attachmentPoint);
+                text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                // Vertical layout holding attachment point name and the spinner
+                LinearLayout layoutV = new LinearLayout(this);
+                layoutV.setLayoutParams(standard);
+                layoutV.setOrientation(LinearLayout.VERTICAL);
+                layoutV.addView(text);
+                layoutV.addView(spinner);
+                // Build the UI component
+                Space space = new Space(this);
+                // NOTE: width 100 is exaggerated for testing!
+                space.setLayoutParams(new LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT));
+                // Horizontal layout so that we can add spacing, contains a spacer and the vertical layout with the content
+                LinearLayout layoutH = new LinearLayout(this);
+                layoutH.setOrientation(LinearLayout.HORIZONTAL);
+                layoutH.setLayoutParams(standard);
+                layoutH.addView(space);
+                layoutH.addView(layoutV);
+                linearLayoutParent.addView(layoutH);
+                // Probably want to make some way to reference back to this particular horizontal layout in the future...
             }
         }
-
-
     }
 
     @Override

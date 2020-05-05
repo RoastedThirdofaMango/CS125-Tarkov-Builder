@@ -36,7 +36,7 @@ public class Mod {
     public Mod(JsonObject stats) {
         name = stats.get("name").getAsString();
         if (mods.containsKey(name)) {
-            System.out.println("DEBUG: Duplicate mod detected");
+            System.out.println("DEBUG: Duplicate mod detected" + name);
         }
         mods.put(name, this);
         weight = stats.get("weight").getAsDouble();

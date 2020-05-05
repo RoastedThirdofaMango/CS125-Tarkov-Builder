@@ -60,4 +60,5 @@
     <string name="velocity">Velocity</string>
     <string name="damage">Damage</string>
     <string name="pen">Penetration</string>
+    <string name="weapon">Weapon</string>
 </resources>
