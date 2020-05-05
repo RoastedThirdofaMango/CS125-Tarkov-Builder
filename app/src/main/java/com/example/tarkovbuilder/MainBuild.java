@@ -136,9 +136,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             updateStats();
         }
         // Find the layout holding the spinner that was used
-        // !! to determine !!
-        LinearLayout l = (LinearLayout) view.getParent().getParent();
-        LinearLayout linearLayoutParent = findViewById(R.id.LL1);
+        LinearLayout linearLayoutParent = (LinearLayout) view.getParent().getParent();
         if (mod != null) {
             // Retrieve the map of attachment point names to tags of mods that fit
             Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
@@ -171,7 +169,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                     layoutH.setLayoutParams(standard);
                     layoutH.addView(space);
                     layoutH.addView(layoutV);
-                    l.addView(layoutH);
+                    linearLayoutParent.addView(layoutH);
                     // Probably want to make some way to reference back to this particular horizontal layout in the future...
                 }
             }
