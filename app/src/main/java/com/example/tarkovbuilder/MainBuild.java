@@ -32,11 +32,6 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         private WeaponBuild.Component component;
         private List<Node> nodes = new ArrayList<>();
         private Node(Mod part) {
-            /* Create a horizontal layout containing a small spacer with height match_parent and width 20dp
-              and a vertical layout with height wrap_content and width match_parent.  In the vertical layout,
-              create text boxes with the name of the attachment point over spinners populated with the available
-              attachments for that attachment point using the getCompatible method in Mod.
-            */
 
         }
         private void addToNodes(Node toAdd) {
@@ -130,44 +125,53 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         updateStats();
     }
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // This doesn't crash the emulator, so I guess everything works sort of?  Currently the spinners don't show up, but then again I haven't assigned them to a view.
+        // Find the text that was selected
         TextView textView = (TextView) view;
         String data = (String) textView.getText();
+        // Find the Mod referenced by the text selected
         Mod mod = Mod.mods.get(data);
+        // If this Mod is a weapon, start a new build
         if (mod instanceof Weapon) {
             build = new WeaponBuild((Weapon) mod);
             updateStats();
         }
+        // Find the layout holding the spinner that was used
+        // !! to determine !!
         LinearLayout linearLayoutParent = findViewById(R.id.LL1);
         if (mod != null) {
+            // Retrieve the map of attachment point names to tags of mods that fit
             Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
+            // Extract a List of only the attachment point names (to iterate over)
             List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
             for (String attachmentPoint : attachmentList) {
                 if (attachmentPoints.get(attachmentPoint) != null) {
-                    LinearLayout layoutH = new LinearLayout(this);
-                    layoutH.setOrientation(LinearLayout.HORIZONTAL);
-                    layoutH.setLayoutParams(standard);
-                    List<String> compatNames = new ArrayList<>();
-                    for (Mod m : Mod.getCompatible(attachmentPoints.get(attachmentPoint))) {
-                        compatNames.add(m.getName());
-                    }
-                    ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, compatNames);
+                    // Array adapter with those names
+                    ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Mod.getCompatible(attachmentPoints.get(attachmentPoint)));
                     Spinner spinner = new Spinner(this);
                     spinner.setAdapter(compatible);
                     spinner.setOnItemSelectedListener(this);
+                    // Build the UI component
                     Space space = new Space(this);
-                    space.setLayoutParams(new LinearLayout.LayoutParams(20, LinearLayout.LayoutParams.MATCH_PARENT));
+                    // NOTE: width 100 is exaggerated for testing!
+                    space.setLayoutParams(new LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT));
+                    // TextView with the name of the attachment point
                     TextView text = new TextView(this);
                     text.setText(attachmentPoint);
                     text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                    layoutH.addView(space);
+                    // Vertical layout holding attachment point name and the spinner
                     LinearLayout layoutV = new LinearLayout(this);
                     layoutV.setLayoutParams(standard);
                     layoutV.setOrientation(LinearLayout.VERTICAL);
                     layoutV.addView(text);
                     layoutV.addView(spinner);
+                    // Horizontal layout so that we can add spacing, contains a spacer and the vertical layout with the content
+                    LinearLayout layoutH = new LinearLayout(this);
+                    layoutH.setOrientation(LinearLayout.HORIZONTAL);
+                    layoutH.setLayoutParams(standard);
+                    layoutH.addView(space);
                     layoutH.addView(layoutV);
                     linearLayoutParent.addView(layoutH);
+                    // Probably want to make some way to reference back to this particular horizontal layout in the future...
                 }
             }
         }

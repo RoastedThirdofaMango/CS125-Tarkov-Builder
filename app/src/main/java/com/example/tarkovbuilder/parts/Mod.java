@@ -89,11 +89,14 @@ public class Mod {
         }
         attachmentPoints = setAttachmentPoints;
     }
-    public static List<Mod> getCompatible(List<String> tags) {
-        List<Mod> toReturn = new ArrayList<>();
+    public static List<String> getCompatible(List<String> tags) {
+        List<String> toReturn = new ArrayList<>();
         for (String tag : tags) {
             if (tagMap.containsKey(tag)) {
-                toReturn.addAll(tagMap.get(tag));
+                List<Mod> mods = tagMap.get(tag);
+                for (Mod m : mods) {
+                    toReturn.add(m.getName());
+                }
             }
         }
         return toReturn;
