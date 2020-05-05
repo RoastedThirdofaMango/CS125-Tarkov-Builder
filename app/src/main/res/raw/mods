@@ -109,6 +109,116 @@
       "penetration": 32,
       "velocity": 890,
       "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Zenit-Belomo PSO 1 4x24 scope",
+      "weight": 0.6,
+      "ergoChange": -7,
+      "tag": "dovetailScope",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Eyecup",
+          "tags": ["optional", "psoEyecup"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Cobra EKP-8-02 reflex sight",
+      "weight": 0.273,
+      "ergoChange": -7,
+      "recoilChange": -0.01,
+      "tag": "dovetailScope",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Sight Shade",
+          "tags": [
+            "optional",
+            "cobraShade"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "B-13 rail platform",
+      "weight": 0.175,
+      "tag": "dovetailMountMed",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Scope",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Leupold Mark 4 HAMR 4x24mm DeltaPoint hybrid assault scope",
+      "weight": 0.411,
+      "ergoChange": -2,
+      "tag": "scopeRail",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Reflex Sight",
+          "tags": ["optional", "deltaPoint"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Leupold DeltaPoint Reflex Sight",
+      "weight": 0.053,
+      "tag": "deltaPoint",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "PSO scope eyecup",
+      "weight": 0.005,
+      "ergoChange": 1,
+      "tag": "psoEyecup",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Cobra Family Sights Shade",
+      "weight": 0.005,
+      "ergoChange": 1,
+      "tag": "cobraShade",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Izhmash АK-74M dust cover (6P34 0-1)",
+      "weight": 0.088,
+      "ergoChange": 5,
+      "tag": "akDustCoverModern",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "Fab Defence PDC dust cover for AK-74",
+      "weight": 0.202,
+      "ergoChange": 7,
+      "accuracyChange": 0.01,
+      "tag": "akDustCoverRail",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Scope",
+          "tags": [
+            "optional",
+            "scopeRail",
+            "reflex",
+            "reflexCRail"
+          ]
+        }
+      ]
     }
   ]
 }
