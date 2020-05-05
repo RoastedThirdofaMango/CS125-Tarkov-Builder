@@ -27,6 +27,7 @@ import java.util.Map;
 public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     // private String sizeValueText = "";
     private WeaponBuild build;
+    private LinearLayout.LayoutParams standard = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
     private class Node {
         private WeaponBuild.Component component;
         private List<Node> nodes = new ArrayList<>();
@@ -61,8 +62,8 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             // build = SaveLoadHandler.load(null);
         });
 
-        LinearLayout rootHlayout = findViewById(R.id.rootHlayout);
-        rootHlayout.setVisibility(View.GONE);
+        LinearLayout hideThis = findViewById(R.id.hideThis);
+        hideThis.setVisibility(View.GONE);
 
         Spinner rootSpinner = findViewById(R.id.spinnerRoot);
         List<String> weapons = new ArrayList<>();
@@ -137,18 +138,19 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             build = new WeaponBuild((Weapon) mod);
             updateStats();
         }
-        LinearLayout linearLayout1 = findViewById(R.id.LL1);
+        LinearLayout linearLayoutParent = findViewById(R.id.LL1);
         if (mod != null) {
             Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
             List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
             for (String attachmentPoint : attachmentList) {
                 if (attachmentPoints.get(attachmentPoint) != null) {
-                    LinearLayout layout = new LinearLayout(this);
+                    LinearLayout layoutH = new LinearLayout(this);
+                    layoutH.setOrientation(LinearLayout.HORIZONTAL);
+                    layoutH.setLayoutParams(standard);
                     List<String> compatNames = new ArrayList<>();
                     for (Mod m : Mod.getCompatible(attachmentPoints.get(attachmentPoint))) {
                         compatNames.add(m.getName());
                     }
-
                     ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, compatNames);
                     Spinner spinner = new Spinner(this);
                     spinner.setAdapter(compatible);
@@ -158,10 +160,14 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                     TextView text = new TextView(this);
                     text.setText(attachmentPoint);
                     text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                    layout.addView(space);
-                    layout.addView(text);
-                    layout.addView(spinner);
-                    linearLayout1.addView(layout);
+                    layoutH.addView(space);
+                    LinearLayout layoutV = new LinearLayout(this);
+                    layoutV.setLayoutParams(standard);
+                    layoutV.setOrientation(LinearLayout.VERTICAL);
+                    layoutV.addView(text);
+                    layoutV.addView(spinner);
+                    layoutH.addView(layoutV);
+                    linearLayoutParent.addView(layoutH);
                 }
             }
         }
