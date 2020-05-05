@@ -18,7 +18,6 @@ import com.example.tarkovbuilder.logic.WeaponStats;
 import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
