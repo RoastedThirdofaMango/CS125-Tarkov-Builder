@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Space;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -135,14 +137,31 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             build = new WeaponBuild((Weapon) mod);
             updateStats();
         }
-        Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
-        List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
-        for (String attachmentPoint : attachmentList) {
-            ArrayAdapter<String> compatible = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, attachmentPoints.get(attachmentPoint));
-            Spinner spinner = new Spinner(this);
-            spinner.setAdapter(compatible);
-            spinner.setOnItemSelectedListener(this);
+        LinearLayout linearLayout1 = findViewById(R.id.LL1);
+        if (mod != null) {
+            Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
+            List<String> attachmentList = new ArrayList<>(attachmentPoints.keySet());
+            for (String attachmentPoint : attachmentList) {
+                if (attachmentPoints.get(attachmentPoint) != null) {
+                    LinearLayout layout = new LinearLayout(this);
+                    ArrayAdapter<String> compatible = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, attachmentPoints.get(attachmentPoint));
+                    Spinner spinner = new Spinner(this);
+                    spinner.setAdapter(compatible);
+                    spinner.setOnItemSelectedListener(this);
+                    Space space = new Space(this);
+                    space.setLayoutParams(new LinearLayout.LayoutParams(20, LinearLayout.LayoutParams.MATCH_PARENT));
+                    String name = attachmentPoint;
+                    TextView text = new TextView(this);
+                    text.setText(name);
+                    text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                    layout.addView(space);
+                    layout.addView(text);
+                    layout.addView(spinner);
+                    linearLayout1.addView(layout);
+                }
+            }
         }
+
 
     }
 
