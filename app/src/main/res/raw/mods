@@ -15,13 +15,14 @@
         {
           "attachmentPoint": "Muzzle Device",
           "tags": [
-            "muzzle545x39",
-            "optional"
+            "optional",
+            "muzzle545x39"
           ]
         },
         {
           "attachmentPoint": "Gas Tube",
           "tags": [
+            "optional",
             "akGasTube",
             "akGasTubeCombo"
           ]
@@ -38,6 +39,7 @@
         {
           "attachmentPoint": "Stock",
           "tags": [
+            "optional",
             "akStockModern"
           ]
         },

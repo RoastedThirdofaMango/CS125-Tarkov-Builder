@@ -1,5 +1,7 @@
 package com.example.tarkovbuilder.logic;
 
+import android.widget.LinearLayout;
+
 import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 import com.google.gson.JsonArray;
@@ -13,9 +15,10 @@ public class WeaponBuild {
     public class Component {
         private List<Component> attachments = new ArrayList<>();
         private Mod value;
-        private boolean removed = false;
+        private boolean removed;
         private Component(Mod setMod) {
             value = setMod;
+            removed = false;
         }
         public List<Component> getAttachments() {
             return attachments;
@@ -33,7 +36,14 @@ public class WeaponBuild {
         }
         public void removeChild(Component toRemove) {
             attachments.remove(toRemove);
-            toRemove.removed = true;
+            toRemove.destroyChildren();
+        }
+        private void destroyChildren() {
+            removed = true;
+            for (Component child : attachments) {
+                child.destroyChildren();
+            }
+            attachments.clear();
         }
     }
     // Constructors
