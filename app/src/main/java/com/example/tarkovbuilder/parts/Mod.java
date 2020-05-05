@@ -92,7 +92,9 @@ public class Mod {
     public static List<Mod> getCompatible(List<String> tags) {
         List<Mod> toReturn = new ArrayList<>();
         for (String tag : tags) {
-            toReturn.addAll(tagMap.get(tag));
+            if (tagMap.containsKey(tag)) {
+                toReturn.addAll(tagMap.get(tag));
+            }
         }
         return toReturn;
     }

@@ -71,7 +71,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         for (Mod m :assaultRifles) {
             weapons.add(m.getName());
         }
-        ArrayAdapter<String> rootAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, weapons);
+        ArrayAdapter<String> rootAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, weapons);
         rootSpinner.setAdapter(rootAdapter);
         rootSpinner.setOnItemSelectedListener(this);
     }
@@ -144,15 +144,19 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
             for (String attachmentPoint : attachmentList) {
                 if (attachmentPoints.get(attachmentPoint) != null) {
                     LinearLayout layout = new LinearLayout(this);
-                    ArrayAdapter<String> compatible = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, attachmentPoints.get(attachmentPoint));
+                    List<String> compatNames = new ArrayList<>();
+                    for (Mod m : Mod.getCompatible(attachmentPoints.get(attachmentPoint))) {
+                        compatNames.add(m.getName());
+                    }
+
+                    ArrayAdapter<String> compatible = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, compatNames);
                     Spinner spinner = new Spinner(this);
                     spinner.setAdapter(compatible);
                     spinner.setOnItemSelectedListener(this);
                     Space space = new Space(this);
                     space.setLayoutParams(new LinearLayout.LayoutParams(20, LinearLayout.LayoutParams.MATCH_PARENT));
-                    String name = attachmentPoint;
                     TextView text = new TextView(this);
-                    text.setText(name);
+                    text.setText(attachmentPoint);
                     text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                     layout.addView(space);
                     layout.addView(text);
