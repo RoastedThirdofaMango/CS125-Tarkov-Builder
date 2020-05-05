@@ -20,36 +20,12 @@ import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-    // private String sizeValueText = "";
     private WeaponBuild build;
     private LinearLayout.LayoutParams standard = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-    private Map<LinearLayout, Node> nodeMap = new HashMap<>();
-    private class Node {
-        private WeaponBuild.Component component;
-        private List<Node> nodes = new ArrayList<>();
-        private LinearLayout parent;
-        private Node(LinearLayout setParent) {
-
-        }
-        private void addToNodes(Node toAdd) {
-            nodes.add(toAdd);
-        }
-        private void destroy(Node toDestroy) {
-            for (Node n : nodes) {
-                destroy(n);
-                nodeMap.remove(n.parent);
-            }
-            parent.removeAllViews();
-        }
-
-    }
-    private Node root;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +49,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
 
         Spinner rootSpinner = findViewById(R.id.spinnerRoot);
         List<String> weapons = new ArrayList<>();
-        weapons.add("none");
+        weapons.add(Mod.tagMap.get("emptyWeapon").get(0).getName());
         List<Mod> assaultRifles = (Mod.tagMap.get("assaultRifle"));
         for (Mod m :assaultRifles) {
             weapons.add(m.getName());

@@ -93,6 +93,18 @@
       "attachmentPoints": []
     },
     {
+      "type": "weapon",
+      "name": "Select Weapon",
+      "weight": 0,
+      "recoilV": 0,
+      "recoilH": 0,
+      "fireRate": 0,
+      "caliber": "None",
+      "size": [0,0],
+      "tag": "emptyWeapon",
+      "attachmentPoints": []
+    },
+    {
       "type": "mod",
       "name": "Izhmash AK polymer pistol grip (6P1 Sb.8)",
       "weight": 0.065,
