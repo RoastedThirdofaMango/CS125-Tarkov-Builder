@@ -32,13 +32,8 @@ public class MainActivity extends AppCompatActivity {
      *Sets up the UI.
      */
     private void setUpUI() {
-        Button newBuild = findViewById(R.id.createNewBuild);
-        newBuild.setOnClickListener(v -> {
-            Intent intent = new Intent(this, newBuildActivity.class);
-            startActivity(intent);
-        });
-        Button oldBuild = findViewById(R.id.accessOldBuild);
-        oldBuild.setOnClickListener(v -> {
+        Button mainBuild = findViewById(R.id.accessMainBuild);
+        mainBuild.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainBuild.class);
             startActivity(intent);
         });
