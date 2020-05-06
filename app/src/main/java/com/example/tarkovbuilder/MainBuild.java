@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,11 +26,13 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private WeaponBuild build;
+    private Map<LinearLayout, WeaponBuild.Component> buildMap = new HashMap<>();
     private LinearLayout.LayoutParams standard = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,12 +129,23 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         // sizeValue.setText(sizeValueText);
 
     }
-    /*private void addPart(Mod toAdd, Node current) {
-        Node newPart = new Node();
-        current.addToNodes(newPart);
-        updateStats();
-    }*/
+    private void cleanMap() {
+        List<LinearLayout> keys = new ArrayList<>(buildMap.keySet());
+        for (LinearLayout key : keys) {
+            if (buildMap.get(key).isRemoved()) {
+                buildMap.remove(key);
+            }
+        }
+    }
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // Find the layout holding the spinner that was used
+        LinearLayout linearLayoutParent = (LinearLayout) view.getParent().getParent();
+        Spinner s = (Spinner) view.getParent();
+        TextView t = (TextView) linearLayoutParent.getChildAt(0);
+        linearLayoutParent.removeAllViews();
+        linearLayoutParent.addView(t);
+        linearLayoutParent.addView(s);
+
         // Find the text that was selected
         TextView textView = (TextView) view;
         String data = (String) textView.getText();
@@ -142,15 +154,19 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         // If this Mod is a weapon, start a new build
         if (mod instanceof Weapon) {
             build = new WeaponBuild((Weapon) mod);
+            buildMap.put(linearLayoutParent, build.getRoot());
+        } else {
+            LinearLayout ancestor = (LinearLayout) linearLayoutParent.getParent().getParent();
+            WeaponBuild.Component parentComponent = buildMap.get(ancestor);
+            if (buildMap.containsKey(linearLayoutParent)) {
+                WeaponBuild.Component old = buildMap.get(linearLayoutParent);
+                parentComponent.removeChild(old);
+            }
+            WeaponBuild.Component current = parentComponent.addAttachment(mod);
+            buildMap.put(linearLayoutParent, current);
         }
-
-        // Find the layout holding the spinner that was used
-        LinearLayout linearLayoutParent = (LinearLayout) view.getParent().getParent();
-        Spinner s = (Spinner) view.getParent();
-        TextView t = (TextView) linearLayoutParent.getChildAt(0);
-        linearLayoutParent.removeAllViews();
-        linearLayoutParent.addView(t);
-        linearLayoutParent.addView(s);
+        updateStats();
+        cleanMap();
 
         // Retrieve the map of attachment point names to tags of mods that fit
         Map<String, List<String>> attachmentPoints = mod.getAttachmentPoints();
@@ -175,8 +191,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                 layoutV.addView(spinner);
                 // Build the UI component
                 Space space = new Space(this);
-                // NOTE: width 100 is exaggerated for testing!
-                space.setLayoutParams(new LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT));
+                space.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
                 // Horizontal layout so that we can add spacing, contains a spacer and the vertical layout with the content
                 LinearLayout layoutH = new LinearLayout(this);
                 layoutH.setOrientation(LinearLayout.HORIZONTAL);
@@ -184,7 +199,6 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                 layoutH.addView(space);
                 layoutH.addView(layoutV);
                 linearLayoutParent.addView(layoutH);
-                // Probably want to make some way to reference back to this particular horizontal layout in the future...
             }
         }
     }

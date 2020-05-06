@@ -13,14 +13,35 @@ public class WeaponBuild {
     public class Component {
         private List<Component> attachments = new ArrayList<>();
         private Mod value;
+        private boolean removed;
         private Component(Mod setMod) {
             value = setMod;
+            removed = false;
         }
         public List<Component> getAttachments() {
             return attachments;
         }
         public Mod getValue() {
             return value;
+        }
+        public Component addAttachment(Mod toAdd) {
+            Component toReturn = new Component(toAdd);
+            attachments.add(toReturn);
+            return toReturn;
+        }
+        public boolean isRemoved() {
+            return removed;
+        }
+        public void removeChild(Component toRemove) {
+            attachments.remove(toRemove);
+            toRemove.destroyChildren();
+        }
+        private void destroyChildren() {
+            removed = true;
+            for (Component child : attachments) {
+                child.destroyChildren();
+            }
+            attachments.clear();
         }
     }
     // Constructors
@@ -37,11 +58,6 @@ public class WeaponBuild {
     // Public getter for root.
     public Component getRoot() {
         return root;
-    }
-
-    public void add(Component current, Mod value) {
-        Component toAdd = new Component(value);
-        current.attachments.add(toAdd);
     }
     // Recursive tree building function for loading a build from JSON.
     private void addAll(Component current, JsonArray parts) {
