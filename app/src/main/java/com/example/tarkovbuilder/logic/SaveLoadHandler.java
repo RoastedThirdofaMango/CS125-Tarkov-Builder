@@ -20,7 +20,6 @@ public abstract class SaveLoadHandler {
         saved.addProperty("part", name);
         saved.add("parts", addToSave(root.getAttachments()));
         savedBuilds.add(saved);
-
         SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
