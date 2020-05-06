@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import com.example.tarkovbuilder.logic.ModsInitializer;
 import com.google.gson.JsonObject;
@@ -23,17 +22,7 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         JsonObject mods = JsonParser.parseReader(in).getAsJsonObject();
         ModsInitializer.initializeMods(mods);
-        setUpUI();
-    }
-
-    /**
-     *Sets up the UI.
-     */
-    private void setUpUI() {
-        Button mainBuild = findViewById(R.id.accessMainBuild);
-        mainBuild.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainBuild.class);
-            startActivity(intent);
-        });
+        Intent intent = new Intent(this, MainBuild.class);
+        startActivity(intent);
     }
 }
