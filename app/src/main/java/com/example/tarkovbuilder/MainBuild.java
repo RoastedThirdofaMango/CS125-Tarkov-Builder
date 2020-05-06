@@ -1,7 +1,11 @@
 package com.example.tarkovbuilder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +22,10 @@ import com.example.tarkovbuilder.logic.WeaponBuild;
 import com.example.tarkovbuilder.logic.WeaponStats;
 import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +49,15 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         Button load = findViewById(R.id.loadBuild);
         load.setOnClickListener(unused -> {
             // build = SaveLoadHandler.load(null);
+            /*Intent intent = new Intent(this, LoadedBuilds.class);
+            startActivityForResult(intent, 150);*/
+            SharedPreferences sharedPreferences = getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString("Weapon Build", null);
+            Type type = new TypeToken<WeaponBuild>() {}.getType();
+            build = gson.fromJson(json, type);
+            updateStats();
+
         });
 
         LinearLayout hideThis = findViewById(R.id.rootHlayout);
@@ -58,11 +74,17 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         rootSpinner.setAdapter(rootAdapter);
         rootSpinner.setOnItemSelectedListener(this);
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 150) {
+            build = LoadedBuilds.loadData();
+        }
+    }
     private boolean trySave() {
         if (build == null) {
             return false;
         }
-        SaveLoadHandler.save(build);
+        SaveLoadHandler.save(build, this);
         return true;
     }
     private void updateStats() {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tarkov Builder</string>
 
-    <string name="create_name">Create New Build</string>
+    <string name="goBack_name">You Have No Saved Builds, Return to Builder</string>
 
     <string name="old_name">Start Building</string>
 
