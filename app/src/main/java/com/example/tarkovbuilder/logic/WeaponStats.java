@@ -73,7 +73,6 @@ public abstract class WeaponStats {
     }
     public static double getVelocity(WeaponBuild build) {
         WeaponBuild.Component root = build.getRoot();
-        Weapon base = (Weapon) root.getValue();
         double baseVelocity = 0;
         for (WeaponBuild.Component attachment : root.getAttachments()) {
             if (attachment.getValue() instanceof Bullet) {
