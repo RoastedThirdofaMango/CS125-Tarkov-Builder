@@ -50,15 +50,6 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         Button load = findViewById(R.id.loadBuild);
         load.setOnClickListener(unused -> {
             // build = SaveLoadHandler.load(null);
-            /*Intent intent = new Intent(this, LoadedBuilds.class);
-            startActivityForResult(intent, 150);*/
-            SharedPreferences sharedPreferences = getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
-            Gson gson = new Gson();
-            String json = sharedPreferences.getString("Weapon Build", null);
-            Type type = new TypeToken<WeaponBuild>() {}.getType();
-            build = gson.fromJson(json, type);
-            updateStats();
-
         });
 
         LinearLayout hideThis = findViewById(R.id.rootHlayout);
@@ -75,17 +66,11 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
         rootSpinner.setAdapter(rootAdapter);
         rootSpinner.setOnItemSelectedListener(this);
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 150) {
-            build = LoadedBuilds.loadData();
-        }
-    }
     private boolean trySave() {
         if (build == null) {
             return false;
         }
-        SaveLoadHandler.save(build, this);
+        SaveLoadHandler.save(build);
         return true;
     }
     private void updateStats() {
