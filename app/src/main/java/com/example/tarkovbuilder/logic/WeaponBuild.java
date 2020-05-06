@@ -1,7 +1,5 @@
 package com.example.tarkovbuilder.logic;
 
-import android.widget.LinearLayout;
-
 import com.example.tarkovbuilder.parts.Mod;
 import com.example.tarkovbuilder.parts.Weapon;
 import com.google.gson.JsonArray;
@@ -60,11 +58,6 @@ public class WeaponBuild {
     // Public getter for root.
     public Component getRoot() {
         return root;
-    }
-
-    public void add(Component current, Mod value) {
-        Component toAdd = new Component(value);
-        current.attachments.add(toAdd);
     }
     // Recursive tree building function for loading a build from JSON.
     private void addAll(Component current, JsonArray parts) {

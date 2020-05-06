@@ -169,8 +169,7 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                 layoutV.addView(spinner);
                 // Build the UI component
                 Space space = new Space(this);
-                // NOTE: width 100 is exaggerated for testing!
-                space.setLayoutParams(new LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT));
+                space.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
                 // Horizontal layout so that we can add spacing, contains a spacer and the vertical layout with the content
                 LinearLayout layoutH = new LinearLayout(this);
                 layoutH.setOrientation(LinearLayout.HORIZONTAL);
@@ -178,8 +177,6 @@ public class MainBuild extends AppCompatActivity implements AdapterView.OnItemSe
                 layoutH.addView(space);
                 layoutH.addView(layoutV);
                 linearLayoutParent.addView(layoutH);
-
-                // Probably want to make some way to reference back to this particular horizontal layout in the future...
             }
         }
     }

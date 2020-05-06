@@ -23,9 +23,10 @@
     {
       "type": "weapon",
       "name": "DT MDR 7.62x51",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 2.95,
+      "ergoChange": 72,
+      "recoilV": 125,
+      "recoilH": 295,
       "fireRate": 650,
       "caliber": "7.62x51mm",
       "size": [2,1],
@@ -78,9 +79,10 @@
     {
       "type": "weapon",
       "name": "DT MDR 5.56x45",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 2.8,
+      "recoilV": 87,
+      "recoilH": 242,
+      "ergoChange": 72,
       "fireRate": 650,
       "caliber": "5.56x45mm",
       "size": [2,1],
@@ -355,9 +357,10 @@
     {
       "type": "weapon",
       "name": "Colt M4A1 5.56x45",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 0.38,
+      "recoilV": 147,
+      "recoilH": 405,
+      "ergoChange": 48,
       "fireRate": 800,
       "caliber": "5.56x45mm",
       "size": [1,1],
@@ -392,9 +395,10 @@
     {
       "type": "weapon",
       "name": "ADAR 2-15 .223",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 0.4,
+      "ergoChange": 48,
+      "recoilV": 149,
+      "recoilH": 407,
       "fireRate": 800,
       "caliber": "5.56x45mm",
       "size": [1,1],
@@ -429,9 +433,10 @@
     {
       "type": "weapon",
       "name": "Lone Star TX-15 DML",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 0.31,
+      "ergoChange": 50,
+      "recoilV": 140,
+      "recoilH": 380,
       "fireRate": 800,
       "caliber": "5.56x45mm",
       "size": [1,1],
@@ -690,7 +695,7 @@
       "type": "barrel",
       "name": "370mm barrel for AR-15",
       "weight": 0.509,
-      "accuracy": 1.32,
+      "accuracy": 1.9,
       "velocityChange": -0.0648,
       "recoilChange": -0.04,
       "ergoChange": -9,
@@ -718,13 +723,13 @@
       "attachmentPoints": []
     },
 
-
     {
       "type": "weapon",
       "name": "HK416A5 5.56x45",
-      "weight": 0,
-      "recoilV": 0,
-      "recoilH": 0,
+      "weight": 0.52,
+      "ergoChange": 51,
+      "recoilV": 156,
+      "recoilH": 413,
       "fireRate": 850,
       "caliber": "5.56x45mm",
       "size": [1,1],
@@ -793,7 +798,7 @@
       "type": "barrel",
       "name": "11\" barrel for 416A5",
       "weight": 0.615,
-      "accuracy": 1.32,
+      "accuracy": 2.29,
       "velocityChange": -0.16,
       "recoilChange": -0.02,
       "ergoChange": -6,
@@ -1000,6 +1005,87 @@
       "attachmentPoints": []
     },
 
+    {
+      "type": "mod",
+      "name": "Daniel Defense Wave Muzzle Brake 5.56x45",
+      "weight": 0.109,
+      "recoilChange": -0.07,
+      "accuracyChange": 0.01,
+      "velocityChange": -0.005,
+      "tag": "muzzle556NATO",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Suppressor",
+          "tags": ["optional", "ddWaveSupp"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Daniel Defence Wave Muzzle Brake 7.62x51",
+      "weight": 0.109,
+      "recoilChange": -0.07,
+      "accuracyChange": 0.01,
+      "velocityChange": -0.005,
+      "tag": "muzzle762NATO",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Suppressor",
+          "tags": ["optional", "ddWaveSupp"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "Daniel Defence Wave QD Sound Suppressor",
+      "weight": 0.488,
+      "recoilChange": -0.07,
+      "velocityChange": 0.01,
+      "ergoChange": -7,
+      "tag": "ddWaveSupp",
+      "attachmentPoints": []
+    },
+    {
+      "type": "mod",
+      "name": "AAC Blackout 51T 5.56x45 flash-hider",
+      "weight": 0.122,
+      "recoilChange": -0.06,
+      "accuracyChange": 0.03,
+      "velocityChange": 0.01,
+      "tag": "muzzle556NATO",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Suppressor",
+          "tags": ["optional", "aacSupp"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "AAC Blackout 51T flash hider (7.62x51)",
+      "weight": 0.122,
+      "recoilChange": -0.05,
+      "accuracyChange": 0.03,
+      "velocityChange": 0.005,
+      "tag": "muzzle762NATO",
+      "attachmentPoints": [
+        {
+          "attachmentPoint": "Suppressor",
+          "tags": ["optional", "aacSupp"]
+        }
+      ]
+    },
+    {
+      "type": "mod",
+      "name": "AAC 762 SDN-6 7.62x51 Sound Suppressor",
+      "weight": 0.567,
+      "recoilChange": -0.05,
+      "velocityChange": 0.0075,
+      "accuracyChange": -0.01,
+      "ergoChange": -7,
+      "tag": "aacSupp",
+      "attachmentPoints": []
+    },
 
     {
       "type": "mod",
